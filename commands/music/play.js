@@ -66,7 +66,7 @@ if (!Tracks || (Tracks && !Tracks.tracks) || (Tracks && Tracks.tracks && !Tracks
   const structure = {
     channel: message.channel,
     vc: channel,
-    volume: null,
+    volume: 100,
     playing: true,
     queue: [],
     connection: null,
