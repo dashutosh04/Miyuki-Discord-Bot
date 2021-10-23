@@ -7,10 +7,10 @@ module.exports = async (client, message, Discord) => {
     if(prefix === null) prefix = 'm!';
     
  
-    const prefixMention = new RegExp(`^<@!?${client.user.id}> `);
+    const a = new RegExp(`^<@!?${client.user.id}> `);
 
-    prefix = message.content.match(prefixMention)
-      ? message.content.match(prefixMention)[0]
+    prefix = message.content.match(a)
+      ? message.content.match(a)[0]
       : prefix;
 
     if (message.content.toLowerCase().indexOf(prefix) !== 0) return;
