@@ -27,7 +27,7 @@ async execute(client,message,args){
         .setTimestamp()
         .setImage(data.url)
         .setFooter(`${data.ups || 0} 👍 | ${data.num_comments || 0} 💬`)
-        message.reply({ embeds: [hug] ,messageReferenceID: message.Id});
+        message.reply({ embeds: [hug] });
 
 
     }

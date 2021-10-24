@@ -26,7 +26,7 @@ execute: async (client, message, args) => {
         const embed = new MessageEmbed()
             .setColor("GREEN")
             .setDescription(`**Changed Nickname of ${member.displayName} to ${nick}**`)
-        message.reply({ embeds: [embed] ,messageReferenceID: message.Id});
+        message.reply({ embeds: [embed] });
         } catch {
             return message.channel.send("**Missing Permissions - [CHANGE_NICKNAME]")
         }

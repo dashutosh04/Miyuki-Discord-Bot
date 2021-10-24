@@ -59,7 +59,7 @@ execute: async (client, message, args) => {
         )
         .setTimestamp() 
           
-        message.reply({ embeds: [stats] ,messageReferenceID: message.Id});
+        message.reply({ embeds: [stats] });
   });
   }
   };

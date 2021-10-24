@@ -24,6 +24,6 @@ execute: async (client, message, args) => {
     .setFooter(`${message.author.username} slaps ${user}`)
     .setTimestamp()
     .setImage(owo.url)
-    message.reply({ embeds: [hug] ,messageReferenceID: message.Id}); 
+    message.reply({ embeds: [hug] }); 
 }
 };

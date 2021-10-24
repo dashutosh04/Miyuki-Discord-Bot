@@ -14,7 +14,7 @@ async execute(client,message,args){
     .setColor("RANDOM")
     .setImage(`https://vacefron.nl/api/changemymind?text=${args.join('+')}`)
     .setTimestamp()
-    message.reply({ embeds: [hug] ,messageReferenceID: message.Id}); 
+    message.reply({ embeds: [hug] }); 
     
     }
         

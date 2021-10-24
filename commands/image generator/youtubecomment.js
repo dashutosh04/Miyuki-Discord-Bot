@@ -19,7 +19,7 @@ async execute(client,message,args){
         .setTitle('Your Comment')
         .setTimestamp()
         .setImage(`https://some-random-api.ml/canvas/youtube-comment?avatar=${Image}&username=${Name}&comment=${Comment}`)
-        message.reply({ embeds: [hug] ,messageReferenceID: message.Id});
+        message.reply({ embeds: [hug] });
     
 
     }

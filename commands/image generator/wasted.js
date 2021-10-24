@@ -29,7 +29,7 @@ async execute(client,message,args){
         .setTitle('WASTED')
         .setTimestamp()
         .setImage(`https://some-random-api.ml/canvas/wasted?avatar=${Image}`)
-        message.reply({ embeds: [hug] ,messageReferenceID: message.Id});
+        message.reply({ embeds: [hug] });
     
     
 

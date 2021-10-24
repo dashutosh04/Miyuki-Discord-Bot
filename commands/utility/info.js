@@ -91,7 +91,7 @@ execute: async (bot, message, args) => {
             .addField("\n__Acknowledgements:__ ", `${acknowledgements}`, true)
             .addField("\n__Permissions:__ ", `${permissions.join(` | `)}`);
             
-            message.reply({ embeds: [embed] ,messageReferenceID: message.Id}); 
+            message.reply({ embeds: [embed] }); 
     
     }
     }

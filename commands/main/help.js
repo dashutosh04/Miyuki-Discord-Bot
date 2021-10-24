@@ -33,7 +33,7 @@ module.exports = {
             .setImage('https://i.imgur.com/pOCJuO0.gif')
             .setTimestamp()
             .setFooter("For more info for a specific command, use d!help {command name}.")
-            message.reply({ embeds: [hp] ,messageReferenceID: message.Id}); 
+            message.reply({ embeds: [hp] }); 
             
         } else {
             const command = message.client.commands.get(args.join(" ").toLowerCase()) || message.client.commands.find(x => x.aliases && x.aliases.includes(args.join(" ").toLowerCase()));
@@ -53,7 +53,7 @@ module.exports = {
             )
             .setImage('https://i.imgur.com/pOCJuO0.gif')
             .setTimestamp()
-            message.reply({ embeds: [ts] ,messageReferenceID: message.Id}); ;
+            message.reply({ embeds: [ts] }); ;
         };
     },
 };

@@ -26,7 +26,7 @@ async execute(client,message,args){
         .setColor("RANDOM")
         .setTimestamp()
         .setImage(`https://some-random-api.ml/canvas/gay?avatar=${Image}`)
-        message.reply({ embeds: [hug] ,messageReferenceID: message.Id});
+        message.reply({ embeds: [hug] });
     }
         
 }

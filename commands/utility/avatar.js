@@ -25,7 +25,7 @@ module.exports = {
         .setImage(avatar)
         .setDescription(`Avatar, looks cool 😄`)
         .setTimestamp()
-        return message.reply({ embeds: [av] ,messageReferenceID: message.Id}); 
+        return message.reply({ embeds: [av] }); 
 
         
     }
