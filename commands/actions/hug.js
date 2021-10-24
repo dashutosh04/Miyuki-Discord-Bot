@@ -38,6 +38,6 @@ execute: async (client, message, args) => {
     .setFooter(`${message.author.username} Hugs ${user} ${tag[rtag]} `)
     .setTimestamp()
     .setImage(owo.url)
-    message.reply({ embeds: [hug] ,messageReferenceID: message.Id});  
+    message.reply({ embeds: [hug] });  
 }
 };

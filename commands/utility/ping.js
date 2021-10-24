@@ -24,7 +24,7 @@ module.exports = {
             .setDescription(`${Embedm.des}`)
             .setTimestamp();
         
-            message.reply({ embeds: [Embed1] ,messageReferenceID: message.Id});
+            message.reply({ embeds: [Embed1] });
             
           })
     

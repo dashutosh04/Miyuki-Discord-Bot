@@ -31,7 +31,7 @@ async execute(client,message,args){
         .setColor("RANDOM")
         .setTimestamp()
         .setImage(json.message)
-        message.reply({ embeds: [hug] ,messageReferenceID: message.Id});  
+        message.reply({ embeds: [hug] });  
     
     
 

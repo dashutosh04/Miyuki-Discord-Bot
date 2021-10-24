@@ -1,8 +1,9 @@
 const fs = require('fs');
 const discord = require('discord.js');
 const {Intents} = require('discord.js')
+const{JerichoPlayer} = require('jericho-player')
 require('dotenv').config();
-const {createAudioPlayer,createAudioResource} = require('@discordjs/voice')
+const {createAudioPlayer} = require('@discordjs/voice')
 const client = new discord.Client({ intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MEMBERS,
@@ -21,15 +22,17 @@ const client = new discord.Client({ intents: [
   restTimeOffset: 0,
   partials: ['CHANNEL', 'MESSAGE', 'REACTION'],
   disableMentions: 'everyone' });
-async function source(h,k){}
-client.db = require('quick.db')
-client.player = createAudioPlayer()
 
+
+
+client.db = require('quick.db')
+client.player = new JerichoPlayer(client);
 client.queue = new Map();
 client.config = require('./config/config');
 client.emotes = client.config.emojis;
 client.commands = new discord.Collection();
-client.on('error', (error) => { console.log(`Emitted Error - ${error}`); });
+
+
 
 fs.readdirSync('./commands').forEach(dirs => {
     const commands = fs.readdirSync(`./commands/${dirs}`).filter(files => files.endsWith('.js'));
@@ -38,11 +41,19 @@ fs.readdirSync('./commands').forEach(dirs => {
         client.commands.set(command.name.toLowerCase(), command);
     };
 });
+const Playerevents = fs.readdirSync('./player').filter(file => file.endsWith('.js'));
 const events = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
 for (const file of events) {
     const event = require(`./events/${file}`);
-    client.on(file.split(".")[0], event.bind(null, client));
+   client.on(file.split(".")[0], event.bind(null, client));
+};
+for (const file of Playerevents) {
+    const event = require(`./player/${file}`);
+    client.player.on(file.split(".")[0], event.bind(null, client));
 };
 
+
+client.on('error', (error) => { console.log(`Emitted Error - ${error}`); });
 
 client.login(process.env.TOKEN);

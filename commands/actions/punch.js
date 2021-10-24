@@ -30,7 +30,7 @@ module.exports = {
         .setFooter(`${message.author.username} punched ${user}`)
         .setTimestamp()
     
-        message.reply({ embeds: [hug] ,messageReferenceID: message.Id}); 
+        message.reply({ embeds: [hug] }); 
 
     }
         

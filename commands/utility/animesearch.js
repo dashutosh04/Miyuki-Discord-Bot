@@ -20,7 +20,7 @@ malScraper.getInfoFromName(search)
     .setThumbnail(data.picture)
     .setColor('RANDOM')
     .setDescription(`**Title** - ${data.englishTitle} \n **Type** - ${data.type} \n **Episodes** - ${data.episodes} \n **Rating** - ${data.rating} \n **Aired** - ${data.aired} \n **Score** - ${data.score} \n **Score Stats** - ${data.scoreStats} \n **Link** - ${data.url}`)
-    message.reply({ embeds: [as] ,messageReferenceID: message.Id});;
+    message.reply({ embeds: [as] });;
 
   })
 }
