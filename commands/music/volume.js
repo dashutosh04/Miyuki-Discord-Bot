@@ -1,52 +1,24 @@
-const {
-    createAudioResource,
-    createAudioPlayer,
-    entersState,
-    joinVoiceChannel,
-    AudioPlayerStatus,
-    VoiceConnectionStatus,
-  } = require('@discordjs/voice')
-
-
 module.exports = {
     name: 'volume',
     aliases: [],
-    description: "Join your vc",
+    description: "Changes Volume of the Song",
     category: 'Music',
-    utilisation: '{prefix}Join',
+    utilisation: '{prefix}Volume Args',
 async execute(client,message,args) {
     const channel = message.member.voice.channel;
     if (!channel)
-      return message.channel.send(
-        "You must Join a voice channel before using this command!"
-      );
-  
-    const queue = message.client.queue.get(message.guild.id);
-  console.log(queue)
+      return message.channel.send("You must Join a voice channel before using this command!");
+    
+    const queue = client.player.GetQueue(message.guild.id);
+    if(!queue) return message.reply(":x: Nothing Playing Right now")
     if (!args[0])
-      return message.channel.send(
-        new MessageEmbed()
-          .setAuthor(
-            "Master Volume Controller",
-            "https://img.icons8.com/color/2x/high-volume--v2.gif"
-          )
-          .setColor("BLUE")
-          .setDescription("**Current volume is " + queue.volume + " **")
-      );
+      return message.channel.send('ok');
   
-    if (args[0] > 100)
-      return message.channel.send(
-        new MessageEmbed()
-          .setAuthor(
-            "Master Volume Error",
-            "https://img.icons8.com/color/2x/high-volume--v2.gif"
-          )
-          .setColor("RED")
-          .setDescription("**Volume cannot exceed 100 :x: **")
-      );
+    if (args[0] > 200)
+      return message.channel.send(`Can't Increase colume above 200%`);
 
-    queue.structure.volume = args[0];
-
+    queue.volume = args[0];
+  message.reply(`Volume: ${queue.volume}`)
 
 
 

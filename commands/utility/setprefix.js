@@ -16,12 +16,12 @@ execute: async (client, message, args) => {
       }
 
     if(args.join("") === process.env.PREFIX) {
-        client.db.delete(`prefix_${message.guild.Id}`)
+        client.db.delete(`prefix_${ message.guild.id}`)
        return await message.channel.send("Reseted Prefix ✅")
       }
 
 
-      client.db.set(`prefix_${message.guild.Id}`, args[0])
+      client.db.set(`prefix_${ message.guild.id}`, args[0])
   await message.channel.send(`Seted Bot Prefix to ${args[0]}`)
 }
 }
