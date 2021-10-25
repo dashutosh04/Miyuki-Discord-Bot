@@ -1,15 +1,4 @@
-const { Extractor } = require('video-extractor')
-const {
-    createAudioResource,
-    getVoiceConnection,
-    createAudioPlayer,
-    entersState,
-    joinVoiceChannel,
-    AudioPlayerStatus,
-    VoiceConnectionStatus,
-  } = require('@discordjs/voice')
-const player = createAudioPlayer()
-
+const {getVoiceConnection} = require('@discordjs/voice')
 module.exports = {
     name: 'leave',
     aliases: [],
@@ -17,8 +6,12 @@ module.exports = {
     category: 'Music',
     utilisation: '{prefix}Join',
 async execute(client,message,args) {
+
+
   const channel = message.member.voice.channel;
   const connection = getVoiceConnection(message.guild.id);
+
+
   if(!connection) return message.channel.send('I am not in a voice channel.')
   if (!channel) return message.channel.send("You must Join a voice channel before using this command!");
 

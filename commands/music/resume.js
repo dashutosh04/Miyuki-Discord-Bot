@@ -1,21 +1,13 @@
-const {
-    createAudioResource,
-    entersState,
-    joinVoiceChannel,
-    AudioPlayerStatus,
-    getVoiceConnection,
-    VoiceConnectionStatus,
-    } = require('@discordjs/voice')
 module.exports = {
     name: 'resume',
     aliases: [],
     description: "Join your vc",
     category: 'Music',
-    utilisation: '{prefix}Join',
+    utilisation: '{prefix}resume',
 async execute(client,message,args) {
-    client.player.unpause();
-    client.player.on(AudioPlayerStatus.Paused, () => {
-        console.log('The audio player has started playing!');
-    });
+    const queue = client.player.GetQueue(message.guild.id);
+    if(!queue) return message.reply(":x: Nothing Playing Right now")
+
+
 }
 }

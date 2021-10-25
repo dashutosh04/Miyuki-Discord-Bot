@@ -3,7 +3,7 @@ module.exports = async (client, message, Discord) => {
     if (message.channel.type === 'dm') return 
 
 
-    let prefix = await client.db.fetch(`prefix_${message.guild.Id}`)
+    let prefix = await client.db.fetch(`prefix_${ message.guild.id}`)
     if(prefix === null) prefix = 'm!';
     
  
