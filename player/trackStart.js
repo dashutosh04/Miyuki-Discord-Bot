@@ -8,10 +8,10 @@ module.exports = (client, queue, track) => {
         .setThumbnail(`${track.thumbnail}`)
         .setImage('https://i.imgur.com/pOCJuO0.gif')
         .setTimestamp()
-    queue.message.reply({ embeds: [ts] }).then(sent => {
+    queue.message.channel.send({ embeds: [ts] }).then(sent => {
         setTimeout(() =>{
             sent.delete()
-        },20000)
+        },track.duration+1000)
     });
 
 };

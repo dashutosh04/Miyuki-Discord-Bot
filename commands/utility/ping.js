@@ -5,28 +5,14 @@ module.exports = {
     utilisation: '{prefix}ping',
     category: 'Utility',
 
-    execute(client,message,args,){
-
-
-        message.channel.send(`Loading data ......`)
-        .then (async (msg) =>{
-            let Embedm = {
-                      title: 'Pinging... <a:developer:809057607963639868> ',
-                      des : ` :hourglass: ${msg.createdTimestamp - message.createdTimestamp}ms .\n :heart: ${client.ws.ping}ms. `
-            }
-            msg.delete();
-            
+execute(client,message){ 
             const Embed1 = new MessageEmbed()
             .setColor('#53ff1a')
-            .setTitle(`${Embedm.title}`)
             .setURL()
             .setThumbnail()
-            .setDescription(`${Embedm.des}`)
-            .setTimestamp();
-        
-            message.reply({ embeds: [Embed1] });
+            .setDescription(`:heart: \`${Math.floor(client.ws.ping/10)}ms\``)
+            message.channel.send({ embeds: [Embed1] });
             
-          })
+ }
     
-    }
 }

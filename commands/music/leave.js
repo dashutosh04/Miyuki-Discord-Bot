@@ -5,7 +5,7 @@ module.exports = {
     description: "Join your vc",
     category: 'Music',
     utilisation: '{prefix}Join',
-async execute(client,message,args) {
+execute(client,message,args) {
 
 
   const channel = message.member.voice.channel;
@@ -21,7 +21,7 @@ async execute(client,message,args) {
 
     connection.destroy();
       if(!connection) return message.reply('Error')
-      await message.reply(':x: Left your VC')
+      message.reply(':x: Left your VC')
     }
     
 }

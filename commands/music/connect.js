@@ -5,7 +5,7 @@ module.exports = {
     description: "Join your vc",
     category: 'Music',
     utilisation: '{prefix}Join',
-async execute(client,message,args) {
+execute(client,message,args) {
   const channel = message.member.voice.channel;
 
   if (!channel)
