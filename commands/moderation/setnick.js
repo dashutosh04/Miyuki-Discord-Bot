@@ -1,12 +1,11 @@
 const { ID } = require("../../config/executive.json")
-const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'setnick',
     aliases: ["nick"],
     description: "Sets Your nickname",
     category: 'Mod',
     utilisation: '{prefix}nickname  <name>',
-execute: async (client, message, args) => {
+execute(client, message, args){
         if(!message.channel.permissionsFor(message.member).has("MANAGE_GUILD") && !ID .includes(message.author.id) ) return message.channel.send("**You Dont Have Permissions To Change Nickname! - [MANAGE_GUILD]**");
       
         if (!args[0]) return message.channel.send("**Please Enter A User!**")
@@ -23,10 +22,7 @@ execute: async (client, message, args) => {
 
         try {
         member.setNickname(nick)
-        const embed = new MessageEmbed()
-            .setColor("GREEN")
-            .setDescription(`**Changed Nickname of ${member.displayName} to ${nick}**`)
-        message.reply({ embeds: [embed] });
+        message.reply(`Nickname Changed`);
         } catch {
             return message.channel.send("**Missing Permissions - [CHANGE_NICKNAME]")
         }

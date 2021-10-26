@@ -3,7 +3,6 @@ const discord = require('discord.js');
 const {Intents} = require('discord.js')
 const{JerichoPlayer} = require('jericho-player')
 require('dotenv').config();
-const {createAudioPlayer} = require('@discordjs/voice')
 const client = new discord.Client({ intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MEMBERS,
@@ -27,7 +26,6 @@ const client = new discord.Client({ intents: [
 
 client.db = require('quick.db')
 client.player = new JerichoPlayer(client);
-client.queue = new Map();
 client.config = require('./config/config');
 client.emotes = client.config.emojis;
 client.commands = new discord.Collection();
