@@ -8,8 +8,7 @@ async execute(client,message,args) {
 
 var Queue = client.player.CreateQueue(message, {
     LeaveOnEmptyTimedout: 5,
-    LeaveOnEndTimedout: 5,
-    extractor: 'youtube-dl'
+    LeaveOnEndTimedout: 5
     })
 await Queue.play(args.join(" "),message.member.voice.channel,message.author)
 

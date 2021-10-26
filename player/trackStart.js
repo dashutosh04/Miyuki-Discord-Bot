@@ -11,7 +11,7 @@ module.exports = (client, queue, track) => {
     queue.message.reply({ embeds: [ts] }).then(sent => {
         setTimeout(() =>{
             sent.delete()
-        },10000)
+        },20000)
     });
 
 };
