@@ -5,15 +5,12 @@ module.exports = {
     description: "Shows the avatar of the user",
     category: 'Utility',
     utilisation: '{prefix}help <command name>',
-    execute(client,message,args){
+execute(client,message,args){
         let user;
-
         if(message.mentions.users.first()) {
             user = message.mentions.users.first();
-
         } else if (args[0]) {
             user = message.guild.members.cache.get(args[0]).user;
-
         } else {
             user = message.author;
         }
