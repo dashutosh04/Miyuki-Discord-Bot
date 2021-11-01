@@ -1,4 +1,4 @@
-const {MessageEmbed} = require('discord.js');
+
 const { Random } = require("something-random-on-discord");
 module.exports = {
     name: 'punch',
@@ -7,7 +7,7 @@ module.exports = {
     category: 'Actions',
     utilisation: '{prefix}punch @mention_user ',
 
-    async execute(client,message,args){
+async execute(client,message,args){
         let target = message.mentions.users.first()
 
     let user;
@@ -23,14 +23,9 @@ module.exports = {
         user = args[0] ;
     }
         let data = await Random.getAnimeImgURL("punch");
-        
-        let hug = new MessageEmbed()
-        .setImage(data)
-        .setColor("RANDOM")
-        .setFooter(`${message.author.username} punched ${user}`)
-        .setTimestamp()
-    
-        message.reply({ embeds: [hug] }); 
+    t= `${message.author.username} punched ${user}`
+    client.embed.actionembed(client,message,args,t,data)
+
 
     }
         

@@ -8,7 +8,6 @@ module.exports = {
 async execute(client, message, args) {
         var prefix = await client.db.fetch(`prefix_${message.guild.id}`)
         if(prefix === null) prefix = 'm!';
-        console.log(prefix)
         if (!args[0]) {
             const actions = message.client.commands.filter(x => x.category == 'Actions').map((x) => '`' + x.name + '`').join(' ,  ');
             const animals = message.client.commands.filter(x => x.category == 'Animals').map((x) => '`' + x.name + '`').join(' ,  ');
@@ -48,15 +47,15 @@ async execute(client, message, args) {
             .setAuthor('HELP PANEL','https://i.imgur.com/eTmFq2M.gif')
             .setColor('#5AEDEF')
             .addFields(
-                    { name: 'Name', value: command.name, inline: true },
-                    { name: 'Category', value: command.category, inline: true },
-                    { name: 'Aliase(s)', value: command.aliases.length < 1 ? 'None' : command.aliases.join(', '), inline: true },
-                    { name: 'Utilisation', value: command.utilisation.replace('${prefix}', prefix), inline: true },
+                    { name: '> Name', value: command.name, inline: true },
+                    { name: '> Category', value: command.category, inline: true },
+                    { name: '> Aliase(s)', value: command.aliases.length < 1 ? 'None' : command.aliases.join(', '), inline: true },
+                    { name: '> Utilisation', value: command.utilisation.replace('${prefix}', prefix), inline: true },
                 
             )
             .setImage('https://i.imgur.com/pOCJuO0.gif')
             .setTimestamp()
-            message.reply({ embeds: [ts] }); ;
+            message.channel.send({ embeds: [ts] }); ;
         };
     },
 };

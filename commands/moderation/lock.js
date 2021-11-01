@@ -1,5 +1,5 @@
 const {MessageEmbed} = require('discord.js');
-const { ID } = require("../../config/executive.json")
+const { ID } = require("../../utils/config/executive.json")
 module.exports = {
         name: 'lock',
         aliases: [],

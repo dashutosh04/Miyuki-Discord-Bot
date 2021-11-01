@@ -1,6 +1,6 @@
 const meme = require('nekos.life');
 const neko = new meme();
-const {MessageEmbed} = require('discord.js')
+
 
 module.exports = {
     name: 'slap',
@@ -19,11 +19,7 @@ execute: async (client, message, args) => {
         user = message.author.username;
     }
   let owo = await neko.sfw.slap();
-  let hug = new MessageEmbed()
-    .setColor("RANDOM")
-    .setFooter(`${message.author.username} slaps ${user}`)
-    .setTimestamp()
-    .setImage(owo.url)
-    message.reply({ embeds: [hug] }); 
+  t= `${message.author.username} Slaps ${user}`
+    client.embed.actionembed(client,message,args,t,owo.url)
 }
 };

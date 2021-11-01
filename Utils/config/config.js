@@ -7,6 +7,7 @@ module.exports = {
         success: ':white_check_mark:',
         load: '<a:aIconLoading:852964903093534812>',
         infinity: '<:Partner:852962850652946468>',
-        typing: '<a:Typing:852966585845153832>'
+        typing: '<a:Typing:852966585845153832>',
+        question: ':grey_question:'
     },
 };

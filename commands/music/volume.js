@@ -1,3 +1,4 @@
+const {MessageEmbed} = require('discord.js')
 module.exports = {
     name: 'volume',
     aliases: [],
@@ -18,7 +19,13 @@ async execute(client,message,args) {
       return message.channel.send(`Can't Increase colume above 200%`);
 
     queue.volume = args[0];
-  message.reply(`Volume: ${queue.volume}`)
+    const Embed1 = new MessageEmbed()
+    .setColor('#53ff1a')
+    .setURL()
+    .setThumbnail()
+    .setDescription(`:speaker: Volume: ${queue.volume}`)
+    message.channel.send({ embeds: [Embed1] });
+  message.delete().catch(err => {})
 
 
 

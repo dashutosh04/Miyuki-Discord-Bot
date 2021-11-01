@@ -7,7 +7,7 @@ module.exports = {
     description: "Sends a winking Image.",
     category: 'Emotes',
     utilisation: '{prefix}wink',
-async execute(client,message){
+async execute(client,message,args){
      const res = await fetch('https://some-random-api.ml/animu/wink');
         const img = (await res.json()).link;
         const embed = new MessageEmbed()
