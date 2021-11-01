@@ -8,4 +8,5 @@ async execute(client, message) {
   
   if(!queue) return message.reply(":x: Nothing Playing Right now")
   queue.skip()
+  message.delete().catch(err => {})
 }};

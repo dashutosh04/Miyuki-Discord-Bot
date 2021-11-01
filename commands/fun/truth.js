@@ -1,5 +1,5 @@
 const {MessageEmbed} = require('discord.js');
-const r = require('better-tord');
+const r = require('miyuki-fun');
 module.exports = {
     name: 'truth',
     aliases: ["t"],
@@ -8,7 +8,10 @@ module.exports = {
     utilisation: '{prefix}truth',
 execute(client,message,args){
     
-const truth = r.get_truth();
-    message.channel.send(truth)
-    
+const truth = r.truth();
+    const Embed1 = new MessageEmbed()
+        .setColor('RANDOM')
+        .setDescription(`${client.config.emojis.question}${truth}`)
+        .setFooter(`By ${message.author.username}`)
+    message.channel.send({ embeds: [Embed1] });
 }}

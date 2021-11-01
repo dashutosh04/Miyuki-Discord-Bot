@@ -1,5 +1,5 @@
 const {MessageEmbed} = require('discord.js');
-const r = require('better-tord');
+const r = require('miyuki-fun');
 module.exports = {
     name: 'dare',
     aliases: ["d"],
@@ -7,6 +7,9 @@ module.exports = {
     category: 'Fun',
     utilisation: '{prefix}dare',
 execute(client,message,args){
-    const dare = r.get_dare();
-    message.channel.send(dare);
+    const truth = r.dare();
+    const Embed1 = new MessageEmbed()
+        .setColor('RANDOM')
+        .setDescription(`<:PepeEvilThink:876323457112100914> ${truth}`)
+    message.channel.send({ embeds: [Embed1] });
 }}

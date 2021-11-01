@@ -1,4 +1,4 @@
-const { ID } = require("../../config/executive.json")
+const { ID } = require("../../utils/config/executive.json")
 const { Permissions } = require('discord.js');
 module.exports = {
     name: 'deafen',

@@ -1,4 +1,4 @@
-const { ID } = require("../../config/executive.json")
+const { ID } = require("../../utils/config/executive.json")
 const {MessageEmbed} = require("discord.js")
 const moment = require('moment');
 

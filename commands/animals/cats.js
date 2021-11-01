@@ -1,4 +1,3 @@
-const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 
 module.exports = {
@@ -7,16 +6,10 @@ module.exports = {
     description: "Sends a cats image.",
     category: 'Animals',
     utilisation: '{prefix}cats',
-async execute(client,message){
-     const res = await fetch('http://shibe.online/api/cats');
-        const img = (await res.json())[0];
-        const embed = new MessageEmbed()
-          .setTitle('🐈  Meow!  🐈')
-          .setImage(img)
-          .setFooter(`Requested by:- ${message.member.displayName}`,  message.author.displayAvatarURL({ dynamic: true }))
-          .setTimestamp()
-          .setColor(message.guild.me.displayHexColor);
-          message.reply({ embeds: [embed] }); 
+async execute(client,message,args){
+    const res = await fetch('https://some-random-api.ml/animal/cat');
+    const name = `🐈 Meow 🐈`
+    client.embed.animals(client,message,args,res,name)
     
 }
 
