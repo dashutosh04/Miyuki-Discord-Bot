@@ -14,10 +14,7 @@ message.channel.send(`Searching for requested songs ${client.emotes.typing} `).t
         sent.delete().catch(err => {})
     },10000)
 })
-var Queue = client.player.CreateQueue(message, {
-    LeaveOnEmptyTimedout: 5,
-    LeaveOnEndTimedout: 5
-    })
+var Queue = client.player.CreateQueue(message)
 await Queue.play(args.join(" "),message.member.voice.channel,message)
 message.delete().catch(err => {})
 

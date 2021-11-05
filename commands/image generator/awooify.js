@@ -1,5 +1,5 @@
 const {MessageEmbed} = require('discord.js');
-const Fetch = require("node-fetch")
+const Miyuki = require('miyuki-api')
 module.exports = {
     name: 'Awooify',
     aliases: ["aw"],
@@ -21,15 +21,14 @@ async execute(client,message,args){
             user = message.author;
         }
         let avatar = user.displayAvatarURL({ dynamic: "true" , size: 1024 ,format: "png"});
-    if (!avatar) throw new Error(`No Image`);
 
-    const res = await Fetch(`https://nekobot.xyz/api/imagegen?type=awooify&url=${encodeURIComponent(avatar)}`), json = await res.json();
-
-    if (!json.message) throw new Error(`Something Went Wrong, Try Again Later!`);
+    
+    const image = await Miyuki.Awooify(avatar)
+  
     let hug = new MessageEmbed()
     .setColor("RANDOM")
     .setTimestamp()
-    .setImage(json.message)
+    .setImage(image)
     message.reply({ embeds: [hug] });  
 
     

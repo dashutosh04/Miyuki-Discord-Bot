@@ -1,5 +1,5 @@
 const {MessageEmbed} = require('discord.js');
-const r = require('miyuki-fun');
+const r = require('miyuki-api');
 module.exports = {
     name: 'truth',
     aliases: ["t"],

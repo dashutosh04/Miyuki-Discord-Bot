@@ -4,7 +4,7 @@ module.exports = (client, queue, track) => {
     const ts = new MessageEmbed()
         .setAuthor('MUSIC PLAYER','https://i.imgur.com/eTmFq2M.gif')
         .setColor('#7ED0DF')
-        .setDescription(`${client.emotes.music} - **STARTING MUSIC** \n**Title** - ${track.title} \n **Requested By**:- ${queue.message.author.username} \n**Voice Channel**:- <#${queue.message.member.voice.channel.id}>`)
+        .setDescription(`${client.emotes.music} - **STARTING MUSIC** \n**Title** - \`${track.title}\` \n **Requested By**:- \`${queue.message.author.username}\` \n**Voice Channel**:- <#${queue.message.member.voice.channel.id}>`)
         .setThumbnail(`${track.thumbnail}`)
         .setImage('https://i.imgur.com/pOCJuO0.gif')
 
