@@ -10,5 +10,5 @@ client.guilds.cache.forEach((guild) => {
 client.clan.set(guild.id ,info);
       });
     console.log(`${client.user.username} is online. Servers:- ${client.guilds.cache.size}, Users:- ${totalmembers}`);
-    client.user.setPresence({ activities: [{ name: "Under Update" }], status: 'dnd' })
+    client.user.setPresence({ activities: [{ name: "Under Update" }], status: 'online' })
 };

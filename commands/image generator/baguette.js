@@ -1,5 +1,5 @@
 const {MessageEmbed} = require('discord.js');
-const Fetch = require("node-fetch")
+const Miyuki = require('miyuki-api')
 module.exports = {
     name: 'Baguette',
     aliases: ["bt"],
@@ -22,15 +22,12 @@ async execute(client,message,args){
         }
         let avatar = user.displayAvatarURL({ dynamic: "true" , size: 1024 ,format: "png"});
 
-        if (!avatar) throw new Error(`No Image`);
-
-        const res = await Fetch(`https://nekobot.xyz/api/imagegen?type=baguette&url=${encodeURIComponent(avatar)}`), json = await res.json();
-    
-        if (!json.message) throw new Error(`Something Went Wrong, Try Again Later!`);
+        const image = await Miyuki.Baguette(avatar)
+  
         let hug = new MessageEmbed()
         .setColor("RANDOM")
         .setTimestamp()
-        .setImage(json.message)
+        .setImage(image)
         message.reply({ embeds: [hug] });  
     
     

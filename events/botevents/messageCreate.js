@@ -1,4 +1,4 @@
-module.exports = async (client, message, Discord) => {
+module.exports = async (client, message) => {
     var args = message.content.trim().split(' ');
 
     if (message.author.bot) return;
@@ -6,7 +6,7 @@ module.exports = async (client, message, Discord) => {
 
 
     let prefix = await client.db.fetch(`prefix_${ message.guild.id}`)
-    if(prefix === null) prefix = 'm!';   
+    if(prefix === null) prefix = process.env.PREFIX;   
     
     const prefixmentioned = new RegExp(`^<@!?${client.user.id}> `);
 
@@ -28,13 +28,7 @@ module.exports = async (client, message, Discord) => {
     const cmd = client.commands.get(command) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command))
     
 try{  
-    if (cmd) cmd.execute(client, message, args);
-    if(!cmd) message.reply(`There was no such command with that name.\nFor the list of commands use the help command.`).then(sent => {
-        setTimeout(() =>{
-            sent.delete().catch(err => {})
-        },5000)
-    })
+    if (cmd) cmd.execute(client, message, args)
 }catch(err){
     console.log(err)        
-}
-};
+}};
