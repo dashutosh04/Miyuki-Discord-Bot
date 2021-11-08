@@ -11,17 +11,13 @@ execute: async (client, message, args) => {
     if(args[1]) {
         return message.channel.send("You can not set prefix a double argument")
       }
-      if(args[0].length > 3) {
+      if(args[0].length > 7) {
         return message.channel.send("You can not send prefix more than 3 characters")
       }
+      client.connection.query(`UPDATE PREFIX SET prefix = \'${args[0]}\' where guild_id = ${message.guild.id}`), function (error, results, fields) {
+        if (error) return console.error(error);
+    }
 
-    if(args.join("") === process.env.PREFIX) {
-        client.db.delete(`prefix_${ message.guild.id}`)
-       return await message.channel.send("Reseted Prefix ✅")
-      }
-
-
-      client.db.set(`prefix_${ message.guild.id}`, args[0])
   await message.channel.send(`Seted Bot Prefix to ${args[0]}`)
 }
 }

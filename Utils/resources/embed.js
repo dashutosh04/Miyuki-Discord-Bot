@@ -19,5 +19,4 @@ async function animals(client,message,args,res,name){
     .setImage(img)
     message.channel.send({ embeds: [Aembed] });
 }
-
 module.exports = {actionembed,animals}

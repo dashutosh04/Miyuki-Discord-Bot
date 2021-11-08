@@ -1,5 +1,12 @@
 module.exports = async (client) => {
-let totalmembers= 0
+function status(){
+    let member = 0
+    client.guilds.cache.forEach((guild) => {
+        member += guild.memberCount
+        client.user.setPresence({ activities: [{ name: `with ${member} Users in ${client.guilds.cache.size} Servers .✨` }], status: 'online'})
+    })
+} setInterval(status, 30000)
+totalmembers = 0
 client.guilds.cache.forEach((guild) => {
     totalmembers += guild.memberCount
     info = {
@@ -10,5 +17,11 @@ client.guilds.cache.forEach((guild) => {
 client.clan.set(guild.id ,info);
       });
     console.log(`${client.user.username} is online. Servers:- ${client.guilds.cache.size}, Users:- ${totalmembers}`);
-    client.user.setPresence({ activities: [{ name: "Under Update" }], status: 'online' })
+client.connection.connect(function(err) {
+        if (err) {
+          console.error('error connecting: ' + err.stack);
+          return;
+        }
+        console.log('Database connected as id ' + client.connection.threadId);
+      });
 };
