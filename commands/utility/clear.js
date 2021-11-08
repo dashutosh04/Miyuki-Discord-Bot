@@ -13,7 +13,7 @@ module.exports = {
         if(args[0] > 100) return message.reply("You can't remove more than 100 messages!");
         
         if(args[0] < 1) return message.reply("So let me think how i am supposed to clear this amount of message 🤔");
-        if(!message.channel.permissionsFor(message.member).has('MANAGE_MESSAGES') && !ID .includes(message.author.id) ) return message.channel.send(`You Don't have permission to delete messages..`);
+        if(!message.channel.permissionsFor(message.member).has('MANAGE_MESSAGES')) return message.channel.send(`You Don't have permission to delete messages..`);
         
         await message.channel.messages.fetch({ limit: args[0]}).then(msg =>{
            

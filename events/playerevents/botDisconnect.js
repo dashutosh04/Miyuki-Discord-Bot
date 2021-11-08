@@ -1,5 +1,5 @@
 module.exports = (client,queue) => {
-    queue.message.channel.send(`${client.emotes.error} - The music was stopped because i was not in a channel..`) 
+    queue.message.channel.send(`${client.emotes.warning} **|** The music was stopped because i was disconnected from the Voice Channel 💫`) 
     
    
 };

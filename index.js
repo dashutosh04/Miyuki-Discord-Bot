@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { Client, Intents ,Collection} = require('discord.js');
-const{JerichoPlayer} = require('jericho-player')
+var mysql = require('mysql');
+const{ Player } = require('jericho-player')
 require('dotenv').config();
 const client = new Client({ intents: [
     Intents.FLAGS.GUILDS,
@@ -20,16 +21,26 @@ const client = new Client({ intents: [
   partials: ['CHANNEL', 'MESSAGE', 'REACTION'],
   disableMentions: 'everyone' });
 
-client.utils = require('./Utils/utils.js')
-client.embed = require('./Utils/resources/embed.js')
-client.db = require('quick.db')
-client.player = new JerichoPlayer(client);
-client.config = require('./Utils/config/config');
+client.utils = require('./utils/utils.js')
+client.database = require('./utils/database/functions.js')
+client.embed = require('./utils/resources/embed.js')
+client.player = new Player(client);
+client.config = require('./utils/config/config');
 client.emotes = client.config.emojis;
 client.commands = new Collection();
 client.clan = new Map()
 
 
+client.connection = mysql.createConnection({
+  host     : process.env.host,
+  user     : process.env.user,  
+  password : process.env.password,
+  database : process.env.database
+});
+ 
+ 
+
+ 
 fs.readdirSync('./commands').forEach(dirs => {
     const commands = fs.readdirSync(`./commands/${dirs}`).filter(files => files.endsWith('.js'));
     for (const file of commands) {
@@ -38,9 +49,9 @@ fs.readdirSync('./commands').forEach(dirs => {
     };
 });
 const Playerevents = fs.readdirSync('./events/playerevents').filter(file => file.endsWith('.js'));
-const events = fs.readdirSync('./events/botevents').filter(file => file.endsWith('.js'));
+const Botevents = fs.readdirSync('./events/botevents').filter(file => file.endsWith('.js'));
 
-for (const file of events) {
+for (const file of Botevents) {
     const event = require(`./events/botevents/${file}`);
    client.on(file.split(".")[0], event.bind(null, client));
 };

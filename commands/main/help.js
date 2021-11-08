@@ -6,8 +6,10 @@ module.exports = {
     utilisation: '{prefix}help <command name>',
 
 async execute(client, message, args) {
-        var prefix = await client.db.fetch(`prefix_${message.guild.id}`)
-        if(prefix === null) prefix = 'm!';
+const Guild = await client.database.getGuild(client,message.guild.id)
+if(!Guild[0]) prefix = process.env.PREFIX
+else prefix = Guild[0].prefix
+
         if (!args[0]) {
             const actions = message.client.commands.filter(x => x.category == 'Actions').map((x) => '`' + x.name + '`').join(' ,  ');
             const animals = message.client.commands.filter(x => x.category == 'Animals').map((x) => '`' + x.name + '`').join(' ,  ');
@@ -32,7 +34,6 @@ async execute(client, message, args) {
                 { name: '> 🛠️ Utility', value: utility },
                 { name: '> 🎈 Moderation', value: mod },
             )
-            .setImage('https://i.imgur.com/pOCJuO0.gif')
             .setTimestamp()
             .setFooter(`For more info for a specific command, ${prefix}help {command name}.`)
             message.reply({ embeds: [hp] }); 
@@ -53,7 +54,6 @@ async execute(client, message, args) {
                     { name: '> Utilisation', value: command.utilisation.replace('${prefix}', prefix), inline: true },
                 
             )
-            .setImage('https://i.imgur.com/pOCJuO0.gif')
             .setTimestamp()
             message.channel.send({ embeds: [ts] }); ;
         };
