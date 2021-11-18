@@ -12,7 +12,5 @@ module.exports = {
         if(!Queue) return message.channel.send('I am not in a voice channel.')
         if (!channel) return message.channel.send("You must Join a voice channel before using this command!");
         const success = Queue.stop();
-        if (success) {message.channel.send(`Song was stopped`)}
-        
       },
     }

@@ -11,8 +11,8 @@ var partner_status
 
 
 let target = message.mentions.users.first()
-
-if (target && target.bot) return (`Well, Find a Human`)
+if (target && target.id == message.author.id) return message.channel.send(`Tryin to marry yourself..`)
+if (target && target.bot) return message.channel.send(`Well, Find a Human`)
 
 
 const status = await client.database.getStatus(client,message.author)
@@ -21,21 +21,23 @@ else self_status= status[0].status
 
 
 if(target && !target.bot){
-const status_2 = await client.database.getStatus(client,target)
+var status_2 = await client.database.getStatus(client,target)
 if(!status_2[0]) partner_status = `Unknown`
 else partner_status= status_2[0].status
 }
+
+if(partner_status == 'single' && self_status == 'single') return message.channel.send(`You both are single xD`)
+if(partner_status == 'mingle' && self_status == 'mingle' && status_2[0].partner == message.author.id) return message.channel.send(`You both are already mingled to each other`)
+
+
 if(!target){
-    if(self_status = 'single') return message.channel.send(`You are currently single.`)
-    if(self_status = 'pending') return message.channel.send(`You have a pending proposal to ${status[0].partner}`)
-    if(self_status = 'mingle') return message.channel.send(`You are already mingled to ${status[0].partner}`)
+    if(self_status == 'pending') return message.channel.send(`You have a pending proposal to <@${status[0].partner}>`)
+    if(self_status == 'mingle') return message.channel.send(`You are already mingled to <@${status[0].partner}> since \`${String(status[0].date_mingled).slice(0,15)}\``)
 }
 
 if(target && !target.bot){
-
-if(partner_status = 'single') return message.channel.send(`They are currently single.`)
-if(partner_status = 'pending') return message.channel.send(`They have a pending proposal`)
-if(partner_status = 'mingle') return message.channel.send(`They are already mingled`)
+    if(partner_status == 'pending') return message.channel.send(`They have a pending proposal to <@${status_2[0].partner}>`)
+    if(partner_status == 'mingle') return message.channel.send(`They are already mingled to <@${status_2[0].partner}> since \`${String(status[0].date_mingled).slice(0,15)}\``)
     }
 
 
