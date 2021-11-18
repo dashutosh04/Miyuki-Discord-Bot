@@ -5,7 +5,7 @@ let target = message.mentions.users.first()
 if(message.author == client.user) return
 
 if (message.channel.type === 'DM') return client.commands.get('ai').execute(client, message,args)
-
+//if (message.guild.id == '827588862267621437' && message.content.split(" ").join("").toLowerCase().includes('bts')) return message.delete().catch(err =>{})
 client.connection.query(`SELECT guild_id FROM PREFIX WHERE guild_id = ${message.guild.id}`, function (error, results, fields) {
     if (error) return console.error(error);
     if(results.length == 0){client.connection.query(`INSERT INTO PREFIX(guild_id, prefix) VALUES (${message.guild.id},\'${process.env.PREFIX}\')`)}
@@ -25,7 +25,7 @@ client.connection.query(`SELECT user_id FROM LOVE WHERE user_id = ${message.auth
     if(results.length == 0){client.connection.query(`INSERT INTO LOVE(user_id, status) VALUES (${message.author.id},'single')`)}
 })
 if(target && !target.bot){
-client.connection.query(`SELECT user_id FROM CURRENCY WHERE user_id = ${target.id}`, function (error, results, fields) {
+client.connection.query(`SELECT user_id FROM LOVE WHERE user_id = ${target.id}`, function (error, results, fields) {
     if (error) return console.error(error);
     if(results.length == 0){client.connection.query(`INSERT INTO LOVE(user_id, status) VALUES (${target.id},'single')`)}
 })

@@ -6,8 +6,7 @@ module.exports = {
     utilisation: '{prefix}help <command name>',
 
 async execute(client, message, args) {
-    let prefix = await client.db.fetch(`prefix_${ message.guild.id}`)
-    if(prefix === null) prefix = process.env.PREFIX ;
+    let prefix = process.env.PREFIX ;
 
     const hp = new MessageEmbed()
     .setAuthor('Miyuki',`${client.user.displayAvatarURL({size:2048,dynamic:true})}`)
