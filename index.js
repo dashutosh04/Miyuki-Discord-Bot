@@ -21,7 +21,6 @@ const client = new Client({ intents: [
   partials: ['CHANNEL', 'MESSAGE', 'REACTION'],
   disableMentions: 'everyone' });
 
-client.utils = require('./utils/utils.js')
 client.database = require('./utils/database/functions.js')
 client.embed = require('./utils/resources/embed.js')
 client.player = new Player(client);
