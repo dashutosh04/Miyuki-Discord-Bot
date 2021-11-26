@@ -3,6 +3,7 @@ var args = message.content.trim().split(' ');
 var prefix = ""
 let target = message.mentions.users.first()
 if(message.author == client.user) return
+if(message.author.bot) return
 
 if (message.channel.type === 'DM') return client.commands.get('ai').execute(client, message,args)
 //if (message.guild.id == '827588862267621437' && message.content.split(" ").join("").toLowerCase().includes('bts')) return message.delete().catch(err =>{})
@@ -51,7 +52,7 @@ prefix = message.content.match(prefixmentioned)
     
 if (!message.content.startsWith(prefix) && message.channel.name.includes('miyuki-songs')){client.commands.get('play').execute(client, message,args)} ;
 if (message.content === `<@!731431395745988649>`|| message.content ===`<@731431395745988649>`)  return client.commands.get('mention').execute(client, message)
-    
+///if(message){client.commands.get('autoreact').execute(client, message,args)}    
 if (message.content.toLowerCase().indexOf(prefix) !== 0) return;
     args = message.content.slice(prefix.length).trim().split(' ');
     

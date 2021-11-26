@@ -27,7 +27,7 @@ execute: async (client, message, args) => {
     }
 
   let owo = await neko.sfw.pat();
-  t= `${message.author.username} Pats${user}`
+  t= `${message.author.username} Pats ${user}`
     client.embed.actionembed(client,message,args,t,owo.url)
 }
 };
