@@ -19,4 +19,13 @@ async function animals(client,message,args,res,name){
     .setImage(img)
     message.channel.send({ embeds: [Aembed] });
 }
-module.exports = {actionembed,animals}
+function expressionembed(message, img ,title , footer ){
+    const embed = new MessageEmbed()
+    .setTitle(`${message.member.displayName}` + title)
+    .setImage(img)
+    .setFooter(footer ,  message.author.displayAvatarURL({ dynamic: true }))
+    .setTimestamp()
+    .setColor("RANDOM");
+    message.reply({ embeds: [embed] }); 
+}
+module.exports = {actionembed,animals,expressionembed}

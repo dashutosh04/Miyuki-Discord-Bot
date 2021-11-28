@@ -4,7 +4,7 @@ module.exports = {
     description: "Flips a coin..",
     category: 'Text Generator',
     utilisation: '{prefix}flipacoin',
-execute: async (client, message, args) => {
+async execute(client, message, args){
   function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);

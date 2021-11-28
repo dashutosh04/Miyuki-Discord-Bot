@@ -7,7 +7,7 @@ module.exports = {
     description: "Makes your text a spoiler",
     category: 'Text Generator',
     utilisation: '{prefix}spoiler',
-execute: async (client, message, args) => {
+async execute(client, message, args){
 
 async function work() {
 

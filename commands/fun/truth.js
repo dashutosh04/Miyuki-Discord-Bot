@@ -12,6 +12,7 @@ const truth = r.truth();
     const Embed1 = new MessageEmbed()
         .setColor('RANDOM')
         .setDescription(`${client.config.emojis.question}${truth}`)
-        .setFooter(`By ${message.author.username}`)
+        .setFooter(`Truth`)
+        .setTimestamp()
     message.channel.send({ embeds: [Embed1] });
 }}

@@ -6,7 +6,7 @@ module.exports = {
         description: "Awooifies your user's avatar",
         category: 'Mod',
         utilisation: '{prefix}moderation',
-execute: async (client, message, args) => {
+async execute(client, message, args){
         let lockPermErr = new MessageEmbed()
         .setTitle("ERROR*")
         .setDescription("**Sorry, you don't have permissions to use this! ❌**")
