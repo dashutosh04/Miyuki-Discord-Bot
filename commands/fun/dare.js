@@ -5,7 +5,7 @@ module.exports = {
     aliases: ["d"],
     description: "",
     category: 'Fun',
-    utilisation: '{prefix}dare',
+    utilisation: '{prefix}dare', 
 execute(client,message,args){
     const truth = r.dare();
     const Embed1 = new MessageEmbed()
