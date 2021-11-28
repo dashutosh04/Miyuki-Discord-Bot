@@ -5,7 +5,7 @@ module.exports = {
     description: "Ai chat",
     category: 'Text Generator',
     utilisation: '{prefix}ai',
-execute: async (client, message, args) => {
+async execute(client, message, args){
 
     res = await fetch(`https://api.monkedev.com/fun/chat?msg=${args.join('')}&key=hPfSppLiteKFZYiBckOMXDYsT`)
     const text = (await res.json()).response

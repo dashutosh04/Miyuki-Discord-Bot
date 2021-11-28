@@ -21,7 +21,7 @@ function platform(){
     return platform
 }
 function cpuusage(){
-    const cpuusage = `\`${percent.toFixed(2)}%\``
+    const cpuusage = `\`35%\``
     return cpuusage
 }
 function cpuclocks(){

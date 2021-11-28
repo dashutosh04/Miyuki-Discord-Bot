@@ -1,7 +1,5 @@
-const meme = require('nekos.life');
-
-const neko = new meme();
-
+const nek = require('nekos.life');
+const neko = new nek();
 module.exports = {
     name: 'cuddle',
     aliases: [],
@@ -9,7 +7,7 @@ module.exports = {
     category: 'Actions',
     utilisation: '{prefix}Cuddle @mention_user',
 
-execute: async (client, message, args) => {
+async execute(client, message, args){
 
     let target = message.mentions.users.first()
 

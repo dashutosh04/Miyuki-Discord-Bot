@@ -6,7 +6,7 @@ module.exports = {
     description: "Calculates",
     category: 'Utility',
     utilisation: '{prefix}calculate <problem>',
-execute: async (client, message, args) => {
+async execute(client, message, args){
  
   
   if(args.length < 1)

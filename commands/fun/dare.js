@@ -11,6 +11,7 @@ execute(client,message,args){
     const Embed1 = new MessageEmbed()
         .setColor('RANDOM')
         .setDescription(`<:PepeEvilThink:876323457112100914> ${truth}`)
-        .setFooter(`By ${message.author.username}`)
+        .setFooter(`Dare`)
+        .setTimestamp()
     message.channel.send({ embeds: [Embed1] });
 }}

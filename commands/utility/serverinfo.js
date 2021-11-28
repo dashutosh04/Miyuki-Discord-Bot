@@ -5,7 +5,7 @@ module.exports = {
     aliases: [],
     utilisation: '{prefix}serverinfo',
     category: 'Utility',
-execute: async (client, message, args) => {
+async execute(client, message, args){
 
 const servericon = message.guild.iconURL;
 const servername = message.guild.name

@@ -8,7 +8,7 @@ module.exports = {
     description: "Sends an anime waifu text.",
     category: 'Text Generator',
     utilisation: '{prefix}cattext',
-execute: async (client, message, args) => {
+async execute(client, message, args){
      async function work() {
 
         let owo = (await neko.sfw.catText());

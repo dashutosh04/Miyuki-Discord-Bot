@@ -1,5 +1,5 @@
-const meme = require('nekos.life');
-const neko = new meme();
+const nek = require('nekos.life');
+const neko = new nek();
 
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
     description: "Posts a tickle",
     category: 'Actions',
     utilisation: '{prefix}tickle',
-execute: async (client, message, args) => {
+async execute(client, message, args){
     let target = message.mentions.users.first()
     let user;
 
