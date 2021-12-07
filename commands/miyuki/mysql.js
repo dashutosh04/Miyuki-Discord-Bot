@@ -6,7 +6,7 @@ module.exports = {
     category: 'Text Generator',
     utilisation: '{prefix}8ball',
 async execute(client,message,args) {
-    if(!ID .includes(message.author.id) ) return message.channel.send('Only the Executives can use this command');
+    if(!ID.includes(message.author.id) ) return message.channel.send('Only the Executives can use this command');
     client.connection.query(`${args.join(' ')}`, function (error, results, fields) {
         if (error) return console.error(error);
         console.log(results)
