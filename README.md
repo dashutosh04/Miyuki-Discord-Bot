@@ -1,7 +1,26 @@
-## ✨Latest Updates
-Code is updated to Discord V13 and works fine.
+# ✨ Miyuki's Documentation
 
-## 🚧 Prerequisites 
+## 🚧 Miyuki's Info
+- Miyuki is a multipurpose bot.
+- It includes features such as music, moderation, etc.
+- Universal Prefix is `miyu`
+- Help command can be viewed by `miyu help` or `{changed_prefix} help`
 
-- [Node.js 16+](https://nodejs.org/en/download/)
-- [discord.js@13.3.0](https://www.npmjs.com/package/discord.js/v/13.3.0)
+## 🪓 Categories
+This is the list of commands of this bot that you can use.
+- 🎵 Music
+> nowplaying , pause , play , resume , skip , stop , volume
+- 👀 Image Generator
+> Awooify , Baguette , blushfact , ChangeMyMind , Clyde , Gay , meme , waifu , wasted , yt comment
+- 😜 Actions
+> cuddle , hug , kiss , pat , poke , punch , slap , tickle
+- 🐻 Animals
+> birds , cats , dogs , fox , kangaroo , koala , panda , raccoon
+- 😀 Emotes
+> cry , wink
+- ❣ Text Generator
+> mysql, 8ball, encode, cattext, ai, flipacoin, spoiler, why
+- 🛠️ Utility
+> avatar , calculate , clear , enlarge , info , invite , nickname , ping , serverinfo , stats , steal
+- 🎈 Moderation
+> deafen , lock , setnick , slowmode , undeafen , unlock , vcmove

@@ -4,8 +4,8 @@ function status(){
     client.guilds.cache.forEach((guild) => {
         member += guild.memberCount
     client.totalmembers = member
-        client.user.setPresence({ activities: [{ name: `with ${member} Users in ${client.guilds.cache.size} Servers .✨` }], status: 'online'})
     })
+    client.user.setPresence({ activities: [{ name: `with ${member} Users in ${client.guilds.cache.size} Servers .✨` }], status: 'online'})
 } setInterval(status, 30000)
 totalmembers = 0
 client.guilds.cache.forEach((guild) => {
