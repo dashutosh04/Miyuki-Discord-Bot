@@ -12,11 +12,11 @@ async execute(client,message,args){
     if(isNaN(args[0])) return message.channel.send(`> ❌ **${message.author.username}** Please enter a valid amount`)
     if(args[0] < 0 || args[0] == 0 ) return message.channel.send(`> ❌ **${message.author.username}** Nub!, you can't send **0 Micash!**`)
 var cash = ''
-const currency = await client.database.getBalance(client,target)
+const currency = await client.database_func.getBalance(client,target)
 if(!currency[0]) return cash = 0
 else cash = currency[0].balance
 if(cash < args[0]) return message.channel.send(`> ❌ **${message.author.username}** Nub!, you don't have enough **Micash!**`)
-if(cash >= args[0]){client.database.sendBalance(client,message,args,target)}
+if(cash >= args[0]){client.database_func.sendBalance(client,message,args,target)}
 
 
 }

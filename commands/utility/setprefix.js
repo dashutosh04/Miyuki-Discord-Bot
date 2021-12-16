@@ -11,7 +11,7 @@ async execute(client, message, args){
     if(args[1]) {
         return message.channel.send("You can not set prefix a double argument")
       }
-      if(args[0].length > 7) {
+    if(args[0].length > 7) {
         return message.channel.send("You can not send prefix more than 3 characters")
       }
       client.connection.query(`UPDATE PREFIX SET prefix = \'${args[0]}\' where guild_id = ${message.guild.id}`), function (error, results, fields) {

@@ -1,28 +1,29 @@
 module.exports = async (client) => {
 function status(){
     let member = 0
-    client.guilds.cache.forEach((guild) => {
-        member += guild.memberCount
-    client.totalmembers = member
-    })
-    client.user.setPresence({ activities: [{ name: `with ${member} Users in ${client.guilds.cache.size} Servers .✨` }], status: 'online'})
-} setInterval(status, 30000)
-totalmembers = 0
-client.guilds.cache.forEach((guild) => {
-    totalmembers += guild.memberCount
-    info = {
-    name: guild.name,
-    members: guild.memberCount
-    };
-        
-client.clan.set(guild.id ,info);
-      });
-    console.log(`${client.user.username} is online. Servers:- ${client.guilds.cache.size}, Users:- ${totalmembers}`);
-client.connection.connect(function(err) {
-        if (err) {
-          console.error('error connecting: ' + err.stack);
-          return;
+    client.guilds.cache.forEach((guild) => {member += guild.memberCount})
+    client.user.setPresence(
+        {
+            activities: [{name: `with ${member} Users in ${client.guilds.cache.size} Servers .✨`}],
+            status: 'online'
         }
-        console.log('Database connected as id ' + client.connection.threadId);
-      });
-};
+        )
+}
+
+setInterval(status, 30000)
+
+
+let member = 0
+client.guilds.cache.forEach((guild) => {member += guild.memberCount})
+
+client.connection.connect(function(err) {
+    if (err) {
+      console.error('There was an error connecting to the database' + err.stack);
+      return;
+    }
+    console.log('Database connected 💝');
+  });
+
+console.log(`${client.user.username} is online. Servers:- ${client.guilds.cache.size}, Users:- ${member}`)
+
+}
