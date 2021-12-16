@@ -1,33 +1,32 @@
-const nek = require('nekos.life');
+const nek = require("nekos.life");
 const neko = new nek();
 
-
 module.exports = {
-    name: 'pat',
-    aliases: [],
-    description: "Posts a pat",
-    category: 'Actions',
-    utilisation: '{prefix}pat @mention_user',
+  name: "pat",
+  aliases: [],
+  description: "Posts a pat",
+  category: "Actions",
+  utilisation: "{prefix}pat @mention_user",
 
-async execute(client, message, args){
-
-    let target = message.mentions.users.first()
+  async execute(client, message, args) {
+    let target = message.mentions.users.first();
 
     let user;
-    if(!args[0]) return message.reply('Please mention a user or a name.')
+    if (!args[0]) return message.reply("Please mention a user or a name.");
 
-    if(args[0].toLowerCase().trim() === 'me') return message.reply('Umm is there no one to pat you. :pleading_face:')
+    if (args[0].toLowerCase().trim() === "me")
+      return message.reply("Umm is there no one to pat you. :pleading_face:");
 
-    if(target){
-        if(target.username === message.author.username) return message.reply(`Umm is there no one to pat you. :pleading_face:`)
-        user = target.username;
-
-    }else {
-        user = args[0] ;
+    if (target) {
+      if (target.username === message.author.username)
+        return message.reply(`Umm is there no one to pat you. :pleading_face:`);
+      user = target.username;
+    } else {
+      user = args[0];
     }
 
-  let owo = await neko.sfw.pat();
-  t= `${message.author.username} Pats ${user}`
-    client.embed.actionembed(client,message,args,t,owo.url)
-}
+    let owo = await neko.sfw.pat();
+    t = `${message.author.username} Pats ${user}`;
+    client.embed.actionembed(client, message, args, t, owo.url);
+  },
 };

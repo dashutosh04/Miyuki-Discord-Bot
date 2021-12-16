@@ -1,3 +1,1 @@
-module.exports = async (client, guild) => {
-	
-};
+module.exports = async (client, guild) => {};
