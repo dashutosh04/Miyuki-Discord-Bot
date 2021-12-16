@@ -6,7 +6,7 @@ module.exports = {
     utilisation: '{prefix}help <command name>',
 
 async execute(client, message, args) {
-const Guild = await client.database.getGuild(client,message.guild.id)
+const Guild = await client.database_func.getGuild(client,message.guild.id)
 if(!Guild[0]) prefix = process.env.PREFIX
 else prefix = Guild[0].prefix
 

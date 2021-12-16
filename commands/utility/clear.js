@@ -17,14 +17,17 @@ module.exports = {
         
         await message.channel.messages.fetch({ limit: args[0]}).then(msg =>{
            
-                message.channel.bulkDelete(msg).catch(err => {
+                message.channel.bulkDelete(msg)
+                .catch(err => {
                const av = new MessageEmbed()
-                .setAuthor(`${message.author.tag}`)
-                .setTitle(`API ERROR`)
-                .setDescription('An error occurred while deleting the messages.')
-                .setColor('#000000')
-                .setImage()
-                .setTimestamp()
+
+               
+               av.setAuthor(`${message.author.tag}`)
+               av.setTitle(`API ERROR`)
+               av.setDescription('An error occurred while deleting the messages.')
+               av.setColor('#000000')
+               av.setImage()
+               av.setTimestamp()
                 message.channel.send({ embeds: [av]})
             });
 

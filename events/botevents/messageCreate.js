@@ -1,46 +1,15 @@
 module.exports = async (client, message) => {
 var args = message.content.trim().split(' ');
-var prefix = ""
-let target = message.mentions.users.first()
-if(message.author == client.user) return
+var prefix;
+
 if(message.author.bot) return
 
-if (message.channel.type === 'DM') return client.commands.get('ai').execute(client, message,args)
-//if (message.guild.id == '827588862267621437' && message.content.split(" ").join("").toLowerCase().includes('bts')) return message.delete().catch(err =>{})
-client.connection.query(`SELECT guild_id FROM PREFIX WHERE guild_id = ${message.guild.id}`, function (error, results, fields) {
-    if (error) return console.error(error);
-    if(results.length == 0){client.connection.query(`INSERT INTO PREFIX(guild_id, prefix) VALUES (${message.guild.id},\'${process.env.PREFIX}\')`)}
-})  
-client.connection.query(`SELECT user_id FROM CURRENCY WHERE user_id = ${message.author.id}`, function (error, results, fields) {
-    if (error) return console.error(error);
-    if(results.length == 0){client.connection.query(`INSERT INTO CURRENCY(user_id, balance) VALUES (${message.author.id},1000)`)}
-})
-if(target && !target.bot){
-client.connection.query(`SELECT user_id FROM CURRENCY WHERE user_id = ${target.id}`, function (error, results, fields) {
-    if (error) return console.error(error);
-    if(results.length == 0){client.connection.query(`INSERT INTO CURRENCY(user_id, balance) VALUES (${target.id},1000)`)}
-})
-}
-client.connection.query(`SELECT user_id FROM LOVE WHERE user_id = ${message.author.id}`, function (error, results, fields) {
-    if (error) return console.error(error);
-    if(results.length == 0){client.connection.query(`INSERT INTO LOVE(user_id, status) VALUES (${message.author.id},'single')`)}
-})
-if(target && !target.bot){
-client.connection.query(`SELECT user_id FROM LOVE WHERE user_id = ${target.id}`, function (error, results, fields) {
-    if (error) return console.error(error);
-    if(results.length == 0){client.connection.query(`INSERT INTO LOVE(user_id, status) VALUES (${target.id},'single')`)}
-})
-}
 
-function getGuild(GuildID){
-    return new Promise((resolve,reject) => {
-        client.connection.query(`SELECT * FROM PREFIX WHERE guild_id = ${GuildID}`,function (error, rows){
-            resolve(rows)
-        });
-    });
-}
+client.database_events.onmsg_setprefix(client, message.guild)
+client.database_events.user_check(client , message)
 
-const Guild = await getGuild(message.guild.id)
+
+const Guild = await client.database_func.getGuild(client,message.guild.id)
 if(!Guild[0]) prefix = process.env.PREFIX
 else prefix = Guild[0].prefix
 

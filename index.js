@@ -1,8 +1,9 @@
 const fs = require('fs');
+var mysql = require('mysql')
 const { Client, Intents ,Collection} = require('discord.js');
-var mysql = require('mysql');
 const{ Player } = require('jericho-player')
-require('dotenv').config();
+require('dotenv').config()
+
 const client = new Client({ intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MEMBERS,
@@ -21,11 +22,12 @@ const client = new Client({ intents: [
   partials: ['CHANNEL', 'MESSAGE', 'REACTION'],
   disableMentions: 'everyone' });
 
-client.database = require('./utils/database/functions.js')
-client.embed = require('./utils/resources/embed.js')
+client.database_func = require('./utils/database/database_func.js')
+client.database_events = require('./utils/database/database_events.js')
+client.embed = require('./utils/embeds/command_embeds.js')
 client.player = new Player(client);
-client.config = require('./utils/config/config');
-client.emotes = client.config.emojis;
+
+client.emotes = require('./utils/config/emojis').emojis;
 client.commands = new Collection();
 client.clan = new Map()
 
