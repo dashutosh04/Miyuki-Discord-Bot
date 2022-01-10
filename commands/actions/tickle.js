@@ -17,13 +17,9 @@ module.exports = {
     }
 
     let user;
-    if (!args[0]) return message.reply("Please mention a user or a name.");
+    if (!args[0] || !target) return message.reply("Please mention a user.");
+    user = target.username;
 
-    if (target) {
-      user = target.username;
-    } else {
-      user = args.join(" ");
-    }
     let owo = await neko.sfw.tickle();
     t = `${message.author.username} Tickles ${user}`;
     client.embed.actionembed(message, t, owo.url);
