@@ -29,7 +29,7 @@ module.exports = {
       message.channel.bulkDelete(msg).catch((err) => {
         const av = new MessageEmbed();
 
-        av.setAuthor(`${message.author.tag}`);
+        av.setAuthor({name:`${message.author.tag}`});
         av.setTitle(`API ERROR`);
         av.setDescription("An error occurred while deleting the messages.");
         av.setColor("#000000");

@@ -1,5 +1,7 @@
 const fs = require("fs");
 var mysql = require("mysql");
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
 const { Client, Intents, Collection } = require("discord.js");
 const { Player } = require("jericho-player");
 require("dotenv").config();
@@ -20,6 +22,7 @@ const client = new Client({
     Intents.FLAGS.DIRECT_MESSAGES,
     Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
     Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+    Intents.FLAGS.GUILD_PRESENCES,
   ],
   partials: ["CHANNEL", "MESSAGE", "REACTION"],
   disableMentions: "everyone",
@@ -32,6 +35,7 @@ client.player = new Player(client);
 
 client.emotes = require("./utils/config/emojis").emojis;
 client.commands = new Collection();
+client.slashcommands = new Collection();
 client.clan = new Map();
 
 client.connection = mysql.createConnection({
@@ -50,6 +54,18 @@ fs.readdirSync("./commands").forEach((dirs) => {
     client.commands.set(command.name.toLowerCase(), command);
   }
 });
+client.comms = [];
+fs.readdirSync("./slashcommands").forEach((dirs) => {
+const commandFiles = fs
+  .readdirSync(`./slashcommands/${dirs}`)
+  .filter((file) => file.endsWith(".js"));
+
+for (const com of commandFiles) {
+  const command = require(`./slashcommands/${dirs}/${com}`);
+  client.comms.push(command.data.toJSON());
+  client.slashcommands.set(command.data.name, command);
+}
+})
 const Playerevents = fs
   .readdirSync("./events/playerevents")
   .filter((file) => file.endsWith(".js"));

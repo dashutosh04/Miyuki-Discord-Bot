@@ -28,7 +28,7 @@ module.exports = async (client, message) => {
     message.content === `<@731431395745988649>`
   )
     return client.commands.get("mention").execute(client, message);
-  ///if(message){client.commands.get('autoreact').execute(client, message,args)}
+
   if (message.content.toLowerCase().indexOf(prefix) !== 0) return;
   args = message.content.slice(prefix.length).trim().split(" ");
 

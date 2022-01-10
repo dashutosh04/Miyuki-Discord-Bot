@@ -9,10 +9,10 @@ module.exports = {
     let prefix = process.env.PREFIX;
 
     const hp = new MessageEmbed()
-      .setAuthor(
-        "Miyuki",
+      .setAuthor({name:
+        "Miyuki",url:
         `${client.user.displayAvatarURL({ size: 2048, dynamic: true })}`
-      )
+      })
       .setDescription(
         `<:Partner:852962850652946468> **Prefix for this server is** \`${prefix}\`\n:green_circle: **Ping**- \`${client.ws.ping}\``
       )
