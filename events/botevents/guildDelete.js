@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js");
+
 module.exports = async (client, guild) => {
   const channel = client.channels.cache.get("906136920642433064");
   channel.send(`LEFT ${guild.name} ${guild.id}`);
