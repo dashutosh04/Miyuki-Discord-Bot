@@ -1,5 +1,5 @@
 const { ID } = require("../../utils/config/executive.json");
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, Permissions } = require("discord.js");
 const moment = require("moment");
 
 const status = {
@@ -15,7 +15,7 @@ module.exports = {
   description: "Shows a defination",
   category: "Utility",
   utilisation: "{prefix}define",
-  execute: async (bot, message, args) => {
+  async execute(client, message, args) {
     var permissions = [];
     var acknowledgements = "None";
     let whoisPermErr = new MessageEmbed()
@@ -30,44 +30,40 @@ module.exports = {
       message.guild.members.cache.get(args[0]) ||
       message.member;
 
-    if (member.hasPermission("KICK_MEMBERS")) {
+    if (member.permissions.has(Permissions.FLAGS.KICK_MEMBERS)) {
       permissions.push("Kick Members");
     }
 
-    if (member.hasPermission("BAN_MEMBERS")) {
+    if (member.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) {
       permissions.push("Ban Members");
     }
 
-    if (member.hasPermission("ADMINISTRATOR")) {
+    if (member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
       permissions.push("Administrator");
     }
 
-    if (member.hasPermission("MANAGE_MESSAGES")) {
+    if (member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) {
       permissions.push("Manage Messages");
     }
 
-    if (member.hasPermission("MANAGE_CHANNELS")) {
+    if (member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) {
       permissions.push("Manage Channels");
     }
 
-    if (member.hasPermission("MENTION_EVERYONE")) {
+    if (member.permissions.has(Permissions.FLAGS.MENTION_EVERYONE)) {
       permissions.push("Mention Everyone");
     }
 
-    if (member.hasPermission("MANAGE_NICKNAMES")) {
+    if (member.permissions.has(Permissions.FLAGS.MANAGE_NICKNAMES)) {
       permissions.push("Manage Nicknames");
     }
 
-    if (member.hasPermission("MANAGE_ROLES")) {
+    if (member.permissions.has(Permissions.FLAGS.MANAGE_ROLES)) {
       permissions.push("Manage Roles");
     }
 
-    if (member.hasPermission("MANAGE_WEBHOOKS")) {
+    if (member.permissions.has(Permissions.FLAGS.MANAGE_WEBHOOKS)) {
       permissions.push("Manage Webhooks");
-    }
-
-    if (member.hasPermission("MANAGE_EMOJIS")) {
-      permissions.push("Manage Emojis");
     }
 
     if (permissions.length == 0) {
@@ -81,16 +77,14 @@ module.exports = {
       acknowledgements = "My Owner";
     }
     const embed = new MessageEmbed()
-      .setDescription(`<@${member.user.id}>`)
-      .setAuthor(
-        `${member.user.tag}`,
+      .setAuthor({name:
+        `${member.user.tag}`,url:
         member.user.displayAvatarURL({ dynamic: true })
-      )
-      .setColor("RANDOM")
+      })
+      .setColor("WHITE")
       .setFooter(`ID: ${message.author.id}`)
       .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
       .setTimestamp()
-      .addField("__Status__", `${status[member.user.presence.status]}`, true)
       .addField(
         "__Joined at:__ ",
         `${moment(member.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`,
@@ -112,8 +106,8 @@ module.exports = {
         true
       )
       .addField("\n__Acknowledgements:__ ", `${acknowledgements}`, true)
-      .addField("\n__Permissions:__ ", `${permissions.join(` | `)}`);
+      .addField("\n__Permissions:__ ", `${permissions.join(` **|** `)}`);
 
-    message.reply({ embeds: [embed] });
+    message.channel.send({ embeds: [embed] });
   },
 };

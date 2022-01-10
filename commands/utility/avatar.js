@@ -17,7 +17,7 @@ module.exports = {
     let avatar = user.displayAvatarURL({ size: 2048, dynamic: true });
 
     const av = new MessageEmbed()
-      .setAuthor(`${message.author.tag}`)
+      .setAuthor({name:`${message.author.tag}`})
       .setColor("#000000")
       .setImage(avatar)
       .setDescription(`Avatar, looks cool 😄`)

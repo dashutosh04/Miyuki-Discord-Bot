@@ -45,10 +45,10 @@ module.exports = {
         .join(" ,  ");
 
       const hp = new MessageEmbed()
-        .setAuthor(
-          "Help Panel 🛠️ ",
+        .setAuthor({name:
+          "Help Panel 🛠️ ",url:
           `${message.author.displayAvatarURL({ size: 2048, dynamic: true })}`
-        )
+        })
         .setDescription(
           "This is the list of commands of this bot that you can use."
         )

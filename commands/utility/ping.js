@@ -1,11 +1,16 @@
 const { MessageEmbed } = require("discord.js");
+const {SlashCommandBuilder} = require("@discordjs/builders")
 module.exports = {
+  data: new SlashCommandBuilder()
+      .setName("ping")
+      .setDescription("Pong"),
+
   name: "ping",
   aliases: ["speed", "latency"],
   utilisation: "{prefix}ping",
   category: "Utility",
 
-  execute(client, message) {
+async execute(client, message) {
     const Embed1 = new MessageEmbed()
       .setColor("#53ff1a")
       .setURL()

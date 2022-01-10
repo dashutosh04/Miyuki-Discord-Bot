@@ -1,10 +1,9 @@
 const { MessageActionRow, MessageButton } = require("discord.js");
-
+const { SlashCommandBuilder } = require("@discordjs/builders");
 module.exports = {
-  name: "invite",
-  aliases: ["inv"],
-  category: "Utility",
-  utilisation: "{prefix}invite",
+  data: new SlashCommandBuilder()
+    .setName("invite")
+    .setDescription("Invite Me ✨"),
   async execute(client, message) {
     const row = new MessageActionRow().addComponents(
       new MessageButton()

@@ -14,10 +14,10 @@ module.exports = {
     });
 
     const stats = new MessageEmbed()
-      .setAuthor(
-        `Miyuki Stats`,
+      .setAuthor({name:
+        `Miyuki Stats`,url:
         `${message.author.displayAvatarURL({ size: 2048, dynamic: true })}`
-      )
+      })
       .setColor("BLACK")
       .addField(
         `> **NODE STATS**`,

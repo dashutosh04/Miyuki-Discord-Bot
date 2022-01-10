@@ -1,3 +1,7 @@
+const fs = require("fs");
+var mysql = require("mysql");
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
 module.exports = async (client) => {
   function status() {
     let member = 0;
@@ -34,4 +38,23 @@ module.exports = async (client) => {
   console.log(
     `${client.user.username} is online. Servers:- ${client.guilds.cache.size}, Users:- ${member}`
   );
+
+  const CLIENT_ID = client.user.id;
+  const GUILD_ID = "914094049923842078";
+
+  const rest = new REST({ version: "9" }).setToken(process.env.TOKEN);
+
+  (async () => {
+    try {
+      console.log("Started refreshing application (/) commands.");
+
+      await rest.put(Routes.applicationCommands(CLIENT_ID), {
+        body: client.comms,
+      });
+
+      console.log("Successfully reloaded application (/) commands.");
+    } catch (error) {
+      console.error(error);
+    }
+  })();
 };
