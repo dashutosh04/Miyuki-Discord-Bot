@@ -17,13 +17,9 @@ module.exports = {
     }
 
     let user;
-    if (!args[0]) return message.reply("Please mention a user or a name.");
+    if (!args[0] || !target) return message.reply("Please mention a user.");
 
-    if (target) {
-      user = target.username;
-    } else {
-      user = args.join(" ");
-    }
+    user = target.username;
 
     let owo = await neko.sfw.poke();
     t = `${message.author.username} Pokes ${user}`;

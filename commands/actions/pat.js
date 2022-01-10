@@ -18,15 +18,11 @@ module.exports = {
     }
 
     let user;
-    if (!args[0]) return message.reply("Please mention a user or a name.");
+    if (!args[0] || !target) return message.reply("Please mention a user.");
 
-    if (target) {
-      if (target.username === message.author.username)
-        return message.reply(`Umm is there no one to pat you. :pleading_face:`);
-      user = target.username;
-    } else {
-      user = args.join(" ");
-    }
+    if (target.username === message.author.username)
+      return message.reply(`Umm is there no one to pat you. :pleading_face:`);
+    user = target.username;
 
     let owo = await neko.sfw.pat();
     t = `${message.author.username} Pats ${user}`;
