@@ -81,9 +81,8 @@ for (const file of Playerevents) {
   const event = require(`./events/playerevents/${file}`);
   client.player.on(file.split(".")[0], event.bind(null, client));
 }
-
-client.on("error", (error) => {
-  console.log(`Emitted Error - ${error}`);
+process.on('unhandledRejection', error => {
+	console.error('Unhandled promise rejection:', error);
 });
 
 client.login(process.env.TOKEN);

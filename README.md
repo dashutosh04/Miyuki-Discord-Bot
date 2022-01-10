@@ -25,5 +25,4 @@ This is the list of commands of this bot that you can use.
   > mysql, 8ball, encode, cattext, ai, flipacoin, spoiler, why
 - 🛠️ Utility
   > avatar , calculate , clear , enlarge , info , invite , nickname , ping , serverinfo , stats , steal
-- 🎈 Moderation
-  > deafen , lock , setnick , slowmode , undeafen , unlock , vcmove
+
