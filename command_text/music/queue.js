@@ -1,3 +1,4 @@
+const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "queue",
   aliases: ["q"],
@@ -17,8 +18,7 @@ module.exports = {
 
     var StringArrays = Queue.tracks.map(
       (track, index) =>
-        `**Track Index :** \`${index}\`\n**Track ID :** \`${track.Id}\`\n**Name :** \`${track.title}\`\n**Author :** \`${track.channelId}\`\n**Duration :** \`${track.human_duration}\`\n**URl :** [Track Url](${track.url})\n`
-    );
+        `**Name :** \`${track.title}\`\n**Duration :** \`${track.human_duration}\``);
     StringArrays = StringArrays.slice(Index, Index + 5);
     StringArrays = StringArrays.filter(Boolean);
     if (Queue.tracks.length > StringArrays.length) {
@@ -28,16 +28,18 @@ module.exports = {
         )}+\` Tracks are Present in Queue`
       );
     }
-    const ReturnEmbed = {
-      title: "Current Queue Stats",
-      description: `__**Current ${Index + 1}/${
-        Queue.tracks.length
-      } Tracks Data**__\n\n${StringArrays.join("\n")}`,
-      field: {
-        title: `Queue Progress Bar`,
-        value: Queue.createProgressBar("queue"),
-      },
-    };
-    return void (await ReturnEmbedGen(client, ReturnEmbed, message));
+    bar = Queue.createProgressBar("queue");
+    const embed = new MessageEmbed();
+    embed.setColor("GREEN");
+    embed.setAuthor({
+      name: `Now Playing`,
+      iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }),
+    });
+    embed.setDescription(`${StringArrays.join("\n")}`);
+    embed.setTimestamp();
+    if (bar) {
+      embed.addFields({ name: "**Progress Bar**", value: bar });
+    }
+    message.channel.send({ embeds: [embed] });
   },
 };

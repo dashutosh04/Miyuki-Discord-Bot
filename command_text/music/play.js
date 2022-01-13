@@ -5,6 +5,7 @@ module.exports = {
   category: "Music",
   async execute(client, message, args) {
     if (!args[0]) return message.channel.send("Please provide a song name");
+    const channel = message.member.voice.channel;
     if (!channel)
       return message.channel.send(
         "You must Join a voice channel before using this command!"

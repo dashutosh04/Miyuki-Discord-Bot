@@ -47,7 +47,7 @@ module.exports = {
       const hp = new MessageEmbed()
         .setAuthor({
           name: "Help Panel 🛠️ ",
-          iconURL: `${message.user.avatarURL({
+          iconURL: `${message.author.avatarURL({
             size: 2048,
             dynamic: true,
           })}`,
@@ -64,12 +64,11 @@ module.exports = {
         { name: "> 😀 Emotes", value: emotes },
         { name: "> ❣ Text Generator", value: Tg },
         { name: "> 🛠️ Utility", value: utility },
-        { name: "> 🎈 Moderation", value: mod }
       )
         .setTimestamp()
-        .setFooter(
+        .setFooter({text:
           `For more info for a specific command, ${prefix}help {command name}.`
-        );
+        });
       message.reply({ embeds: [hp] });
     } else {
       const command =
@@ -84,7 +83,7 @@ module.exports = {
         );
 
       const ts = new MessageEmbed()
-        .setAuthor("HELP PANEL", "https://i.imgur.com/eTmFq2M.gif")
+        .setAuthor({name:"HELP PANEL",iconURL: "https://i.imgur.com/eTmFq2M.gif"})
         .setColor("#5AEDEF")
         .addFields(
           { name: "> Name", value: command.name, inline: true },
