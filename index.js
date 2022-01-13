@@ -1,7 +1,5 @@
 const fs = require("fs");
 var mysql = require("mysql");
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
 const { Client, Intents, Collection } = require("discord.js");
 const { Player } = require("jericho-player");
 require("dotenv").config();
@@ -36,7 +34,7 @@ client.player = new Player(client);
 client.emotes = require("./utils/config/emojis").emojis;
 client.commands = new Collection();
 client.slashcommands = new Collection();
-client.clan = new Map();
+client.comms = [];
 
 client.connection = mysql.createConnection({
   host: process.env.host,
@@ -45,44 +43,72 @@ client.connection = mysql.createConnection({
   database: process.env.database,
 });
 
-fs.readdirSync("./commands").forEach((dirs) => {
+fs.readdirSync("./command_text").forEach((dirs) => {
   const commands = fs
-    .readdirSync(`./commands/${dirs}`)
+    .readdirSync(`./command_text/${dirs}`)
     .filter((files) => files.endsWith(".js"));
   for (const file of commands) {
-    const command = require(`./commands/${dirs}/${file}`);
+    const command = require(`./command_text/${dirs}/${file}`);
     client.commands.set(command.name.toLowerCase(), command);
   }
 });
-client.comms = [];
-fs.readdirSync("./slashcommands").forEach((dirs) => {
-const commandFiles = fs
-  .readdirSync(`./slashcommands/${dirs}`)
-  .filter((file) => file.endsWith(".js"));
 
-for (const com of commandFiles) {
-  const command = require(`./slashcommands/${dirs}/${com}`);
-  client.comms.push(command.data.toJSON());
-  client.slashcommands.set(command.data.name, command);
-}
-})
-const Playerevents = fs
+fs.readdirSync("./command_slash").forEach((dirs) => {
+  const commandFiles = fs
+    .readdirSync(`./command_slash/${dirs}`)
+    .filter((file) => file.endsWith(".js"));
+
+  for (const com of commandFiles) {
+    const command = require(`./command_slash/${dirs}/${com}`);
+    client.comms.push(command.data.toJSON());
+    client.slashcommands.set(command.data.name, command);
+  }
+});
+const PlayerEvents = fs
   .readdirSync("./events/playerevents")
   .filter((file) => file.endsWith(".js"));
-const Botevents = fs
-  .readdirSync("./events/botevents")
+const ClientEvents = fs
+  .readdirSync("./events/clientevents")
+  .filter((file) => file.endsWith(".js"));
+const GuildEvents = fs
+  .readdirSync("./events/guildevents")
+  .filter((file) => file.endsWith(".js"));
+const MessageEvents = fs
+  .readdirSync("./events/messageevents")
+  .filter((file) => file.endsWith(".js"));
+const ErrorEvents = fs
+  .readdirSync("./events/errorevents")
+  .filter((file) => file.endsWith(".js"));
+const MessageEvents = fs
+  .readdirSync("./events/messageevents")
   .filter((file) => file.endsWith(".js"));
 
-for (const file of Botevents) {
-  const event = require(`./events/botevents/${file}`);
+for (const file of ClientEvents) {
+  const event = require(`./events/clientevents/${file}`);
   client.on(file.split(".")[0], event.bind(null, client));
 }
-for (const file of Playerevents) {
+for (const file of PlayerEvents) {
   const event = require(`./events/playerevents/${file}`);
   client.player.on(file.split(".")[0], event.bind(null, client));
 }
-process.on('unhandledRejection', error => {
-	console.error('Unhandled promise rejection:', error);
+for (const file of ErrorEvents) {
+  const event = require(`./events/errorevents/${file}`);
+  client.on(file.split(".")[0], event.bind(null, client));
+}
+for (const file of GuildEvents) {
+  const event = require(`./events/guildevents/${file}`);
+  client.on(file.split(".")[0], event.bind(null, client));
+}
+for (const file of MessageEvents) {
+  const event = require(`./events/messageevents/${file}`);
+  client.on(file.split(".")[0], event.bind(null, client));
+}
+for (const file of MessageEvents) {
+  const event = require(`./events/messageevents/${file}`);
+  client.on(file.split(".")[0], event.bind(null, client));
+}
+process.on("unhandledRejection", (error) => {
+  console.error("Unhandled promise rejection:", error);
 });
 
 client.login(process.env.TOKEN);
