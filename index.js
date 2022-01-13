@@ -79,8 +79,8 @@ const MessageEvents = fs
 const ErrorEvents = fs
   .readdirSync("./events/errorevents")
   .filter((file) => file.endsWith(".js"));
-const MessageEvents = fs
-  .readdirSync("./events/messageevents")
+const InteractionEvents = fs
+  .readdirSync("./events/interactionevents")
   .filter((file) => file.endsWith(".js"));
 
 for (const file of ClientEvents) {
@@ -103,8 +103,8 @@ for (const file of MessageEvents) {
   const event = require(`./events/messageevents/${file}`);
   client.on(file.split(".")[0], event.bind(null, client));
 }
-for (const file of MessageEvents) {
-  const event = require(`./events/messageevents/${file}`);
+for (const file of InteractionEvents) {
+  const event = require(`./events/interactionevents/${file}`);
   client.on(file.split(".")[0], event.bind(null, client));
 }
 process.on("unhandledRejection", (error) => {
