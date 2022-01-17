@@ -11,7 +11,7 @@ module.exports = {
     const Embed1 = new MessageEmbed()
       .setColor("RANDOM")
       .setDescription(`<:PepeEvilThink:876323457112100914> ${truth}`)
-      .setFooter(`Dare`)
+      .setFooter({text:`Dare`})
       .setTimestamp();
     message.reply({ embeds: [Embed1] });
   },

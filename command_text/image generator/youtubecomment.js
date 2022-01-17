@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const Random = require("srod-v2");
 module.exports = {
-  name: "yt comment",
+  name: "ytcomment",
   aliases: ["yc"],
   description: "Wastes you",
   category: "Image Generator",

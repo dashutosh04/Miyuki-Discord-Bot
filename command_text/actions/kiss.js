@@ -25,6 +25,7 @@ module.exports = {
 
     let tag = ["Cute!!", "Lewd!", "UwU"];
     let rtag = Math.floor(Math.random() * tag.length);
+    let owo = await neko.sfw.kiss();
     t = `${message.author.username} kisses ${user} ${tag[rtag]}`;
     client.embed.actionembed(message, t, owo.url);
   },

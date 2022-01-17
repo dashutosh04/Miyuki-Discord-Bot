@@ -4,6 +4,16 @@ const { Client, Intents, Collection } = require("discord.js");
 const { Player } = require("jericho-player");
 require("dotenv").config();
 const { BotLists } = require("discord-botlists");
+const botlist = new BotLists(
+  undefined,
+  {
+    topgg: {
+      authorizationToken: "miyuki_0604",
+    },
+  },
+  11487,
+  "unit1.nighthost.tech"
+);
 const client = new Client({
   intents: [
     Intents.FLAGS.GUILDS,
@@ -117,27 +127,12 @@ for (const file of InteractionEvents) {
 }
 for (const file of BotlistEvents) {
   const event = require(`./events/botlistevents/${file}`);
-  client.on(file.split(".")[0], event.bind(null, client));
+  botlist.on(file.split(".")[0], event.bind(null, client));
 }
 for (const file of ProcessEvents) {
-  const event = require(`./events/botlistevents/${file}`);
+  const event = require(`./events/processevents/${file}`);
   process.on(file.split(".")[0], event.bind(null, client));
 }
-
-process.on("unhandledRejection", (error) => {
-  console.error("Unhandled promise rejection:", error);
-});
-
-const botlist = new BotLists(
-  undefined,
-  {
-    topgg: {
-      authorizationToken: "miyuki_0604",
-    },
-  },
-  11487,
-  "unit1.nighthost.tech"
-);
 
 new Promise(async (resolve) => {
   resolve(await botlist.start());
