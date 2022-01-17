@@ -5,7 +5,7 @@ module.exports = {
   aliases: ["yc"],
   description: "Wastes you",
   category: "Image Generator",
-  utilisation: "{prefix}yt comment",
+  utilisation: "{prefix}ytcomment",
 
   async execute(client, message, args) {
     let avatar = message.user.avatarURL({

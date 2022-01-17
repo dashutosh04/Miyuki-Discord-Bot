@@ -3,7 +3,7 @@ module.exports = {
   name: "mention",
   aliases: [],
   category: "",
-  utilisation: "{prefix}help <command name>",
+  utilisation: "{prefix}mention",
 
   async execute(client, message, args) {
     const Guild = await client.database_func.getGuild(client, message.guild.id);

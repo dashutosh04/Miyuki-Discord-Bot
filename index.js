@@ -8,7 +8,8 @@ const botlist = new BotLists(
   undefined,
   {
     topgg: {
-      authorizationToken: "miyuki_0604",
+      authorizationToken: process.env.topggbot,
+      authorizationValue: process.env.topgg,
     },
   },
   11487,
@@ -136,6 +137,15 @@ for (const file of ProcessEvents) {
 
 new Promise(async (resolve) => {
   resolve(await botlist.start());
+});
+
+new Promise(async (resolve) => {
+  resolve(
+    await botlist.poststats({
+      bot_id: client.user.id,
+      server_count: client.guilds.cache.size,
+    })
+  );
 });
 
 client.login(process.env.TOKEN);
