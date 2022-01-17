@@ -5,7 +5,7 @@ function actionembed(message, text, url) {
     .setColor("RANDOM")
     .setAuthor({
       name: text,
-      iconURL: `${message.user.avatarURL({
+      iconURL: `${message.author.displayAvatarURL({
         size: 2048,
         dynamic: true,
       })}`,
@@ -21,7 +21,7 @@ async function animals(client, message, args, res, name) {
     .setColor("RANDOM")
     .setAuthor({
       name: `${name}`,
-      iconURL: `${message.user.avatarURL({
+      iconURL: `${message.author.displayavatarURL({
         size: 2048,
         dynamic: true,
       })}`,
@@ -29,7 +29,7 @@ async function animals(client, message, args, res, name) {
     .setTimestamp()
     .setFooter({
       text: `Requested by:- ${message.member.displayName}`,
-      iconURL: message.user.avatarURL({ dynamic: true }),
+      iconURL: message.author.displayavatarURL({ dynamic: true }),
     })
     .setImage(img);
   message.reply({ embeds: [Aembed] });
@@ -38,7 +38,7 @@ function expressionembed(message, img, title, footer) {
   const embed = new MessageEmbed()
     .setTitle(`${message.member.displayName}` + title)
     .setImage(img)
-    .setFooter(footer, message.user.avatarURL({ dynamic: true }))
+    .setFooter(footer, message.author.displayavatarURL({ dynamic: true }))
     .setTimestamp()
     .setColor("RANDOM");
   message.reply({ embeds: [embed] });

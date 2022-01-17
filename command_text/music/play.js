@@ -20,7 +20,7 @@ module.exports = {
     const Queue =
       client.player.GetQueue(message.guild.id) ??
       client.player.CreateQueue(message, {
-        NoMemoryLeakMode: true,
+        NoMemoryLeakMode: false,
         metadata: { message: message },
       });
     await Queue.play(args.join(), message.member.voice.channel, message.author);
