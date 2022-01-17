@@ -11,7 +11,7 @@ module.exports = {
     const Embed1 = new MessageEmbed()
       .setColor("RANDOM")
       .setDescription(`${client.config.emojis.question}${truth}`)
-      .setFooter(`Truth`)
+      .setFooter({text:`Truth`})
       .setTimestamp();
     message.reply({ embeds: [Embed1] });
   },

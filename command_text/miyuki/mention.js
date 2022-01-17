@@ -6,7 +6,9 @@ module.exports = {
   utilisation: "{prefix}help <command name>",
 
   async execute(client, message, args) {
-    let prefix = process.env.PREFIX;
+    const Guild = await client.database_func.getGuild(client, message.guild.id);
+    if (!Guild[0]) prefix = process.env.PREFIX;
+    else prefix = Guild[0].prefix;
 
     const hp = new MessageEmbed()
       .setAuthor({
