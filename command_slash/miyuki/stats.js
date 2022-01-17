@@ -1,13 +1,13 @@
 const { MessageEmbed } = require("discord.js");
 const statdata = require("../../utils/resources/statsdata.js");
+const { SlashCommandBuilder } = require("@discordjs/builders");
 const { version } = require("discord.js");
 const os = require("os");
 module.exports = {
-  name: "stats",
-  aliases: [],
-  utilisation: "{prefix}stats",
-  category: "Utility",
-  async execute(client, message, args) {
+  data: new SlashCommandBuilder()
+    .setName("stats")
+    .setDescription("Provides the stats for the bot. 💫"),
+  async execute(client, interaction, args) {
     let member = 0;
     client.guilds.cache.forEach((guild) => {
       member += guild.memberCount;
@@ -16,7 +16,7 @@ module.exports = {
     const stats = new MessageEmbed()
       .setAuthor({
         name: `Miyuki Stats`,
-        iconURL: `${message.user.avatarURL({
+        iconURL: `${interaction.user.avatarURL({
           size: 2048,
           dynamic: true,
         })}`,
@@ -65,6 +65,6 @@ module.exports = {
       )
       .setTimestamp();
 
-    message.reply({ embeds: [stats] });
+    interaction.reply({ embeds: [stats] });
   },
 };

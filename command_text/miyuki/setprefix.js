@@ -2,7 +2,8 @@ module.exports = {
   name: "prefix",
   category: "utility",
   description: "Sets the prefix for this server.",
-  utilisation: `prefix <newPrefix>`,
+  aliases: ["setprefix"],
+  utilisation: `{prefix}prefix <newPrefix>`,
   async execute(client, message, args) {
     if (!message.channel.permissionsFor(message.member).has("MANAGE_GUILD"))
       return message.reply(`You don\'t have perms`);

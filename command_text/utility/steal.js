@@ -3,9 +3,9 @@ const { ID } = require("../../utils/config/executive.json");
 module.exports = {
   name: "steal",
   aliases: [],
-  description: "Sets Your nickname",
+  description: "",
   category: "Utility",
-  utilisation: "{prefix}nickname  <name>",
+  utilisation: "",
   async execute(client, message, args) {
     if (
       !message.channel.permissionsFor(message.member).has("MANAGE_EMOJIS") &&
