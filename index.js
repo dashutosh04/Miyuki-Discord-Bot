@@ -3,7 +3,7 @@ var mysql = require("mysql");
 const { Client, Intents, Collection } = require("discord.js");
 const { Player } = require("jericho-player");
 require("dotenv").config();
-
+const { BotLists } = require("discord-botlists");
 const client = new Client({
   intents: [
     Intents.FLAGS.GUILDS,
@@ -83,6 +83,14 @@ const InteractionEvents = fs
   .readdirSync("./events/interactionevents")
   .filter((file) => file.endsWith(".js"));
 
+const BotlistEvents = fs
+  .readdirSync("./events/botlistevents")
+  .filter((file) => file.endsWith(".js"));
+
+const ProcessEvents = fs
+  .readdirSync("./events/processevents")
+  .filter((file) => file.endsWith(".js"));
+
 for (const file of ClientEvents) {
   const event = require(`./events/clientevents/${file}`);
   client.on(file.split(".")[0], event.bind(null, client));
@@ -107,8 +115,32 @@ for (const file of InteractionEvents) {
   const event = require(`./events/interactionevents/${file}`);
   client.on(file.split(".")[0], event.bind(null, client));
 }
+for (const file of BotlistEvents) {
+  const event = require(`./events/botlistevents/${file}`);
+  client.on(file.split(".")[0], event.bind(null, client));
+}
+for (const file of ProcessEvents) {
+  const event = require(`./events/botlistevents/${file}`);
+  process.on(file.split(".")[0], event.bind(null, client));
+}
+
 process.on("unhandledRejection", (error) => {
   console.error("Unhandled promise rejection:", error);
+});
+
+const botlist = new BotLists(
+  undefined,
+  {
+    topgg: {
+      authorizationToken: "miyuki_0604",
+    },
+  },
+  11487,
+  "unit1.nighthost.tech"
+);
+
+new Promise(async (resolve) => {
+  resolve(await botlist.start());
 });
 
 client.login(process.env.TOKEN);

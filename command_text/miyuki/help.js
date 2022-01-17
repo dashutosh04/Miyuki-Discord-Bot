@@ -60,7 +60,6 @@ module.exports = {
         { name: "> 🎵 Music", value: music },
         { name: "> 👀 Image Generator", value: Mg },
         { name: "> 😜 Actions", value: actions },
-        { name: "> 🐻 Animals", value: animals },
         { name: "> 😀 Emotes", value: emotes },
         { name: "> ❣ Text Generator", value: Tg },
         { name: "> 🛠️ Utility", value: utility },
