@@ -139,13 +139,18 @@ new Promise(async (resolve) => {
   resolve(await botlist.start());
 });
 
+botlist.on("posted", (postResponse, timestamp) => {
+  console.log(postResponse);
+  console.log("Date/Time : " + timestamp);
+
+  // ... call back function work here ...
+});
 new Promise(async (resolve) => {
   resolve(
     await botlist.poststats({
       bot_id: client.user.id,
-      server_count: client.guilds.cache.size,
+      server_count: client.guilds.cache.size + 1,
     })
   );
 });
-
 client.login(process.env.TOKEN);
