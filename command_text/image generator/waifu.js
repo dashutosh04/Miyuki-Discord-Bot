@@ -15,6 +15,6 @@ module.exports = {
       .setColor("RANDOM")
       .setTimestamp();
 
-    message.reply(hug);
+    await message.reply(hug);
   },
 };

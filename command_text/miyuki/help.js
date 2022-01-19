@@ -100,7 +100,7 @@ module.exports = {
           }
         )
         .setTimestamp();
-      message.reply({ embeds: [ts] });
+      await message.channel.send({ embeds: [ts] });
     }
   },
 };

@@ -3,7 +3,7 @@ const Random = require("srod-v2");
 module.exports = {
   name: "ytcomment",
   aliases: ["yc"],
-  description: "Wastes you",
+  description: "",
   category: "Image Generator",
   utilisation: "{prefix}ytcomment",
 

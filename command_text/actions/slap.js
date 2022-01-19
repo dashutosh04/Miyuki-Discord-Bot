@@ -23,6 +23,6 @@ module.exports = {
 
     let owo = await neko.sfw.slap();
     t = `${message.author.username} Slaps ${user}`;
-    client.embed.actionembed(message, t, owo.url);
+    await client.embed.actionembed(message, t, owo.url);
   },
 };

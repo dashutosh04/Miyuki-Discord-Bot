@@ -14,6 +14,6 @@ module.exports = {
       .setColor("RANDOM")
       .setImage(`https://vacefron.nl/api/changemymind?text=${args.join("+")}`)
       .setTimestamp();
-    message.reply({ embeds: [hug] });
+    await message.reply({ embeds: [hug] });
   },
 };

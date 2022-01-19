@@ -13,9 +13,9 @@ module.exports = {
     const embed = new MessageEmbed()
       .setTitle(`${message.member.displayName} Winks`)
       .setImage(img)
-      .setFooter(`Ohoo`, message.user.avatarURL({ dynamic: true }))
+      .setFooter({text:`Ohoo`,iconURL: message.user.avatarURL({ dynamic: true })})
       .setTimestamp()
       .setColor(message.guild.me.displayHexColor);
-    message.reply({ embeds: [embed] });
+    await message.channel.send({ embeds: [embed] });
   },
 };

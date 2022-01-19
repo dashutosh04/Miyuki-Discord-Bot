@@ -16,9 +16,9 @@ module.exports = {
       msg2[2] = "Tails";
       var x = getRandomInt(0, 8);
       if (x < 4) {
-        interaction.reply(msg2[1]);
+        await interaction.reply(msg2[1]);
       } else {
-        interaction.reply(msg2[2]);
+        await interaction.reply(msg2[2]);
       }
     }
   },

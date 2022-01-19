@@ -65,6 +65,6 @@ module.exports = {
       )
       .setTimestamp();
 
-    message.reply({ embeds: [stats] });
+    message.cahnnel.send({ embeds: [stats] });
   },
 };

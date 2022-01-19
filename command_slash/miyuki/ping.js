@@ -8,6 +8,6 @@ module.exports = {
       .setURL()
       .setThumbnail()
       .setDescription(`:heart: \`${Math.floor(client.ws.ping)}ms\``);
-    interaction.reply({ embeds: [Embed1] });
+    await interaction.reply({ embeds: [Embed1] });
   },
 };

@@ -22,6 +22,6 @@ module.exports = {
       .setColor("RANDOM")
       .setTimestamp()
       .setImage(json.message);
-    message.reply({ embeds: [hug] });
+    await message.reply({ embeds: [hug] });
   },
 };

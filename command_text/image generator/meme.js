@@ -22,7 +22,7 @@ module.exports = {
       .setTitle("Memes")
       .setTimestamp()
       .setImage(data.url)
-      .setFooter(`${data.ups || 0} 👍 | ${data.num_comments || 0} 💬`);
-    message.reply({ embeds: [hug] });
+      .setFooter({text:`${data.ups || 0} 👍 | ${data.num_comments || 0} 💬`});
+    await message.reply({ embeds: [hug] });
   },
 };

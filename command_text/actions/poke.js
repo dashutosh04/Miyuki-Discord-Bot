@@ -23,6 +23,6 @@ module.exports = {
 
     let owo = await neko.sfw.poke();
     t = `${message.author.username} Pokes ${user}`;
-    client.embed.actionembed(message, t, owo.url);
+    await client.embed.actionembed(message, t, owo.url);
   },
 };
