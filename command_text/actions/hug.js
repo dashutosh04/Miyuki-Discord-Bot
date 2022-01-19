@@ -28,6 +28,6 @@ module.exports = {
     let rtag = Math.floor(Math.random() * tag.length);
     let owo = await neko.sfw.hug();
     t = `${message.author.username} Hugs ${user} ${tag[rtag]}`;
-    client.embed.actionembed(message, t, owo.url);
+    await client.embed.actionembed(message, t, owo.url);
   },
 };

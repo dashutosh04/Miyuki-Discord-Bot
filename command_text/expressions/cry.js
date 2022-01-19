@@ -17,6 +17,6 @@ module.exports = {
       .setFooter(`${message.author.username} is crying there.. ${tag[rtag]}`)
       .setTimestamp();
 
-    message.reply({ embeds: [cry] });
+    await message.channel.send({ embeds: [cry] });
   },
 };

@@ -17,19 +17,20 @@ module.exports = {
     } else {
       user = message.author;
     }
-    let avatar = user.displayAvatarURL({
-      dynamic: "true",
-      size: 1024,
-      format: "png",
-    });
-    if (!avatar) throw new Error(`No Image (Format: png)`);
 
-    const Image = encodeURI(avatar);
     let hug = new MessageEmbed()
       .setColor("RANDOM")
       .setTitle("WASTED")
       .setTimestamp()
-      .setImage(`https://some-random-api.ml/canvas/wasted?avatar=${Image}`);
-    message.reply({ embeds: [hug] });
+      .setImage(
+        `https://some-random-api.ml/canvas/wasted?avatar=${user.displayAvatarURL(
+          {
+            dynamic: "true",
+            size: 1024,
+            format: "png",
+          }
+        )}`
+      );
+    await message.reply({ embeds: [hug] });
   },
 };

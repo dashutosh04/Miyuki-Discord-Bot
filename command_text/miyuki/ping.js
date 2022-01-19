@@ -14,6 +14,6 @@ module.exports = {
       .setURL()
       .setThumbnail()
       .setDescription(`:heart: \`${Math.floor(client.ws.ping)}ms\``);
-    message.reply({ embeds: [Embed1] });
+    await message.channel.send({ embeds: [Embed1] });
   },
 };

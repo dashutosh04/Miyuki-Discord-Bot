@@ -26,6 +26,6 @@ module.exports = {
 
     let owo = await neko.sfw.pat();
     t = `${message.author.username} Pats ${user}`;
-    client.embed.actionembed(message, t, owo.url);
+    await client.embed.actionembed(message, t, owo.url);
   },
 };

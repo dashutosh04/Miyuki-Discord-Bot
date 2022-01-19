@@ -22,6 +22,6 @@ module.exports = {
 
     let data = await Random.getAnimeImgURL("punch");
     t = `${message.author.username} punched ${user}`;
-    client.embed.actionembed(message, t, data);
+    await client.embed.actionembed(message, t, data);
   },
 };

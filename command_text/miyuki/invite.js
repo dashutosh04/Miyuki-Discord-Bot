@@ -13,7 +13,7 @@ module.exports = {
         .setURL("https://dsc.gg/miyukibot")
     );
 
-    await message.reply({
+    await message.channel.send({
       content:
         "<a:yayyyy:858000597844492339> **Invite Miyuki to your server by clicking the link below**",
       components: [row],

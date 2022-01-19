@@ -23,6 +23,6 @@ module.exports = {
         if (error) return console.error(error);
       };
 
-    await message.reply(`Seted Bot Prefix to ${args[0]}`);
+    await message.channel.send(`Seted Bot Prefix to ${args[0]}`);
   },
 };

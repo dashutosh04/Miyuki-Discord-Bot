@@ -22,10 +22,10 @@ module.exports = {
         `<:Partner:852962850652946468> **Prefix for this server is** \`${prefix}\`\n:green_circle: **Ping**- \`${client.ws.ping}\``
       )
       .setColor("BLACK")
-      .setFooter(
-        `For help command use \`${prefix}help\``,
+      .setFooter({text:
+        `For help command use \`${prefix}help\``,iconURL:
         `${message.user.avatarURL({ size: 2048, dynamic: true })}`
-      );
+      });
     message.reply({ embeds: [hp] });
   },
 };

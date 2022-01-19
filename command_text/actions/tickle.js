@@ -22,6 +22,6 @@ module.exports = {
 
     let owo = await neko.sfw.tickle();
     t = `${message.author.username} Tickles ${user}`;
-    client.embed.actionembed(message, t, owo.url);
+    await client.embed.actionembed(message, t, owo.url);
   },
 };

@@ -27,6 +27,6 @@ module.exports = {
       .setColor("RANDOM")
       .setTimestamp()
       .setImage(`https://some-random-api.ml/canvas/gay?avatar=${Image}`);
-    message.reply({ embeds: [hug] });
+    await message.reply({ embeds: [hug] });
   },
 };
