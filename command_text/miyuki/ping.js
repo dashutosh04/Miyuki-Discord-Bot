@@ -13,7 +13,7 @@ module.exports = {
       .setColor("#53ff1a")
       .setURL()
       .setThumbnail()
-      .setDescription(`:heart: \`${Math.floor(client.ws.ping / 10)}ms\``);
+      .setDescription(`:heart: \`${Math.floor(client.ws.ping)}ms\``);
     message.reply({ embeds: [Embed1] });
   },
 };

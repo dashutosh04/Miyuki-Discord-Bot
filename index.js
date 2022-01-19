@@ -98,10 +98,6 @@ const BotlistEvents = fs
   .readdirSync("./events/botlistevents")
   .filter((file) => file.endsWith(".js"));
 
-const ProcessEvents = fs
-  .readdirSync("./events/processevents")
-  .filter((file) => file.endsWith(".js"));
-
 for (const file of ClientEvents) {
   const event = require(`./events/clientevents/${file}`);
   client.on(file.split(".")[0], event.bind(null, client));
@@ -130,27 +126,20 @@ for (const file of BotlistEvents) {
   const event = require(`./events/botlistevents/${file}`);
   botlist.on(file.split(".")[0], event.bind(null, client));
 }
-for (const file of ProcessEvents) {
-  const event = require(`./events/processevents/${file}`);
-  process.on(file.split(".")[0], event.bind(null, client));
-}
 
 new Promise(async (resolve) => {
   resolve(await botlist.start());
 });
 
 botlist.on("posted", (postResponse, timestamp) => {
-  console.log(postResponse);
   console.log("Date/Time : " + timestamp);
-
-  // ... call back function work here ...
 });
 new Promise(async (resolve) => {
   resolve(
     await botlist.poststats({
-      bot_id: client.user.id,
-      server_count: client.guilds.cache.size + 1,
-    })
+      bot_id: "731431395745988649",
+      server_count: "21",
+    }).catch(err => console.log("Botlist Stats error: " + err.message))
   );
 });
 client.login(process.env.TOKEN);

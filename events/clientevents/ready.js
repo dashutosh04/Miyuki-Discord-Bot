@@ -32,7 +32,7 @@ module.exports = async (client) => {
     }
     console.log("Database connected 💝");
   });
-
+  client.database_events.table_check(client);
   console.log(
     `${client.user.username} is online. Servers:- ${client.guilds.cache.size}, Users:- ${member}`
   );
