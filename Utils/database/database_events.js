@@ -25,4 +25,8 @@ async function user_check(client, message) {
     }
   );
 }
-module.exports = { onmsg_setprefix, user_check };
+async function table_check(client) {
+  client.connection.query(`CREATE TABLE IF NOT EXISTS PREFIX (guild_id varchar(255), prefix Varchar(255)) `);
+}
+
+module.exports = { onmsg_setprefix, user_check ,table_check};
