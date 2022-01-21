@@ -131,15 +131,19 @@ new Promise(async (resolve) => {
   resolve(await botlist.start());
 });
 
+client.on("ready", (client) => {
+  new Promise(async (resolve) => {
+    resolve(
+      await botlist.poststats({
+        bot_id: "731431395745988649",
+        server_count: client.guilds.cache.size,
+      })
+    );
+  });
+});
+
 botlist.on("posted", (postResponse, timestamp) => {
   console.log("Date/Time : " + timestamp);
-});
-new Promise(async (resolve) => {
-  resolve(
-    await botlist.poststats({
-      bot_id: "731431395745988649",
-      server_count: "21",
-    }).catch(err => console.log("Botlist Stats error: " + err.message))
-  );
+  console.log(postResponse);
 });
 client.login(process.env.TOKEN);
