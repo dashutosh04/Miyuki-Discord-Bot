@@ -1,5 +1,10 @@
 # ✨ Miyuki's Documentation
 
+> **⚠️ This repository is archived and no longer maintained.**
+> 
+> This project was a Discord music bot built with Discord.js. It is now archived for reference purposes only.
+
+
 ## 🚧 Miyuki's Info
 
 - Miyuki is a multipurpose bot.
